@@ -8,7 +8,47 @@ from odoo.addons.boardkit_dashboard.tests.common import BoardkitTemplateSmokeMix
 
 @tagged("post_install", "-at_install")
 class TestPurchaseDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
-    template_xmlids = ("boardkit_dashboard_purchase.template_purchase_overview",)
+    template_xmlids = (
+        "boardkit_dashboard_purchase.template_purchase_overview",
+        "boardkit_dashboard_purchase.template_purchase_overview_es_cl",
+    )
+
+    def test_es_cl_template_is_localized_and_functionally_equivalent(self):
+        english = self.env.ref("boardkit_dashboard_purchase.template_purchase_overview")
+        spanish = self.env.ref(
+            "boardkit_dashboard_purchase.template_purchase_overview_es_cl"
+        )
+        self.assertIn("es_CL", spanish.name)
+        self.assertEqual(spanish.key, "purchase_overview_es_cl")
+        self.assertEqual(spanish.group_ids, english.group_ids)
+
+        def without_labels(value):
+            if isinstance(value, dict):
+                return {
+                    key: without_labels(item)
+                    for key, item in value.items()
+                    if key not in {"name", "description", "tags"}
+                }
+            if isinstance(value, list):
+                return [without_labels(item) for item in value]
+            return value
+
+        self.assertEqual(
+            without_labels(spanish.payload), without_labels(english.payload)
+        )
+        english_board = english.payload["dashboards"][0]
+        spanish_board = spanish.payload["dashboards"][0]
+        self.assertEqual(spanish_board["tags"], ["Compras"])
+        self.assertNotEqual(spanish_board["name"], english_board["name"])
+        self.assertNotEqual(spanish_board["description"], english_board["description"])
+        self.assertNotEqual(
+            [item["name"] for item in spanish_board["items"]],
+            [item["name"] for item in english_board["items"]],
+        )
+        self.assertNotEqual(
+            [item["name"] for item in spanish_board["filters"]],
+            [item["name"] for item in english_board["filters"]],
+        )
 
     def test_create_from_template_purchase_overview(self):
         template = self.env.ref(
