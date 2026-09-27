@@ -3,6 +3,10 @@
 
 import {formatFloat, humanNumber} from "@web/core/utils/numbers";
 
+const ES_CL_NUMBER_FORMATTER = new Intl.NumberFormat("es-CL", {
+    maximumFractionDigits: 0,
+});
+
 export const PALETTES = {
     default: [
         "#4EA7F2",
@@ -174,6 +178,9 @@ export function hexToRGBA(hex, alpha) {
 
 export function formatNumber(value, numberStyle) {
     const number = value || 0;
+    if (numberStyle === "es_cl") {
+        return ES_CL_NUMBER_FORMATTER.format(number);
+    }
     if (numberStyle === "exact") {
         return formatFloat(number, {digits: [16, Number.isInteger(number) ? 0 : 2]});
     }

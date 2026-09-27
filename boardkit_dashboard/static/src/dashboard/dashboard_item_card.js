@@ -183,12 +183,12 @@ export class DashboardItemCard extends Component {
         }
         if (display === "ratio") {
             return data.value_2
-                ? formatNumber(data.value / data.value_2, "exact")
+                ? formatNumber(data.value / data.value_2, this.config.number_style)
                 : "-";
         }
         if (display === "percent") {
             return data.value_2
-                ? `${formatNumber((data.value / data.value_2) * 100, "exact")}%`
+                ? `${formatNumber((data.value / data.value_2) * 100, this.config.number_style)}%`
                 : "-";
         }
         return null;
@@ -202,7 +202,7 @@ export class DashboardItemCard extends Component {
         const delta =
             ((data.value - data.previous_value) / Math.abs(data.previous_value)) * 100;
         return {
-            value: `${formatNumber(Math.abs(delta), "exact")}%`,
+            value: `${formatNumber(Math.abs(delta), this.config.number_style)}%`,
             positive: delta >= 0,
         };
     }

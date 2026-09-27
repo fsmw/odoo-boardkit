@@ -24,6 +24,7 @@
         {
           "name": "Solicitudes de cotización",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "aggregation": "count",
           "icon": "fa-file-text-o",
@@ -39,6 +40,7 @@
         {
           "name": "Órdenes de compra",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "aggregation": "count",
           "icon": "fa-shopping-basket",
@@ -56,6 +58,7 @@
         {
           "name": "Total neto",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "aggregation": "sum",
           "measure_field_id": "amount_untaxed",
@@ -75,6 +78,7 @@
         {
           "name": "Monto de solicitudes de cotización",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "aggregation": "sum",
           "measure_field_id": "amount_untaxed",
@@ -92,6 +96,7 @@
         {
           "name": "Tasa de confirmación",
           "item_type": "kpi",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "aggregation": "count",
           "kpi_mode": "comparison",
@@ -113,6 +118,7 @@
         {
           "name": "Valor promedio del pedido",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "aggregation": "avg",
           "measure_field_id": "amount_untaxed",
@@ -132,6 +138,7 @@
         {
           "name": "Recepciones atrasadas",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "aggregation": "count",
           "icon": "fa-exclamation-triangle",
@@ -147,6 +154,7 @@
         {
           "name": "Facturas pendientes",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "aggregation": "count",
           "icon": "fa-file-text",
@@ -162,6 +170,7 @@
         {
           "name": "Monto neto por mes",
           "item_type": "area",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "aggregation": "sum",
           "measure_field_id": "amount_untaxed",
@@ -185,6 +194,7 @@
         {
           "name": "Principales proveedores por monto",
           "item_type": "bar_horizontal",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "aggregation": "sum",
           "measure_field_id": "amount_untaxed",
@@ -207,6 +217,7 @@
         {
           "name": "Órdenes por estado",
           "item_type": "doughnut",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "aggregation": "count",
           "group_by_field_id": "state",
@@ -223,6 +234,7 @@
         {
           "name": "Gastos por comprador",
           "item_type": "bar",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "aggregation": "sum",
           "measure_field_id": "amount_untaxed",
@@ -245,6 +257,7 @@
         {
           "name": "Órdenes recientes",
           "item_type": "list",
+          "number_style": "es_cl",
           "model": "purchase.order",
           "list_type": "plain",
           "sort_field_id": "create_date",

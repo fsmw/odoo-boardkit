@@ -30,6 +30,7 @@
         {
           "name": "Total facturado",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "sum",
           "measure_field_id": "amount_total_signed",
@@ -49,6 +50,7 @@
         {
           "name": "CxC pendiente",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "sum",
           "measure_field_id": "amount_residual_signed",
@@ -66,6 +68,7 @@
         {
           "name": "Vencido",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "sum",
           "measure_field_id": "amount_residual_signed",
@@ -83,6 +86,7 @@
         {
           "name": "Notas de credito",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "sum",
           "measure_field_id": "amount_total_signed",
@@ -101,6 +105,7 @@
         {
           "name": "Tasa de cobranza",
           "item_type": "kpi",
+          "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "count",
           "kpi_mode": "comparison",
@@ -122,6 +127,7 @@
         {
           "name": "Cobrado",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "sum",
           "measure_field_id": "amount_total_signed",
@@ -141,6 +147,7 @@
         {
           "name": "Facturas en borrador",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "count",
           "icon": "fa-pencil-square-o",
@@ -157,6 +164,7 @@
         {
           "name": "Facturas publicadas",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "count",
           "icon": "fa-check-square-o",
@@ -173,6 +181,7 @@
         {
           "name": "Monto facturado por mes",
           "item_type": "area",
+          "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "sum",
           "measure_field_id": "amount_total_signed",
@@ -196,6 +205,7 @@
         {
           "name": "Top clientes por monto",
           "item_type": "bar_horizontal",
+          "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "sum",
           "measure_field_id": "amount_total_signed",
@@ -218,6 +228,7 @@
         {
           "name": "Por estado de pago",
           "item_type": "doughnut",
+          "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "count",
           "group_by_field_id": "payment_state",
@@ -235,6 +246,7 @@
         {
           "name": "Por vendedor",
           "item_type": "bar",
+          "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "sum",
           "measure_field_id": "amount_total_signed",
@@ -257,6 +269,7 @@
         {
           "name": "Facturas recientes",
           "item_type": "list",
+          "number_style": "es_cl",
           "model": "account.move",
           "list_type": "plain",
           "sort_field_id": "invoice_date",

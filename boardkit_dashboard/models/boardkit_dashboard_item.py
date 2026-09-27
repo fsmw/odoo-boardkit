@@ -543,7 +543,11 @@ class BoardkitDashboardItem(models.Model):
         help="Palette applied when the color palette is set to Custom.",
     )
     number_style = fields.Selection(
-        selection=[("compact", "Compact"), ("exact", "Exact")],
+        selection=[
+            ("compact", "Compact"),
+            ("exact", "Exact"),
+            ("es_cl", "es_CL (no decimals)"),
+        ],
         default="compact",
         required=True,
     )

@@ -27,6 +27,7 @@
         {
           "name": "Oportunidades abiertas",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "crm.lead",
           "aggregation": "count",
           "icon": "fa-bullseye",
@@ -42,6 +43,7 @@
         {
           "name": "Oportunidades ganadas",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "crm.lead",
           "aggregation": "count",
           "icon": "fa-trophy",
@@ -59,6 +61,7 @@
         {
           "name": "Ingresos esperados",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "crm.lead",
           "aggregation": "sum",
           "measure_field_id": "expected_revenue",
@@ -76,6 +79,7 @@
         {
           "name": "Ingresos ganados",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "crm.lead",
           "aggregation": "sum",
           "measure_field_id": "expected_revenue",
@@ -95,6 +99,7 @@
         {
           "name": "Tasa de cierre",
           "item_type": "kpi",
+          "number_style": "es_cl",
           "model": "crm.lead",
           "aggregation": "count",
           "kpi_mode": "comparison",
@@ -116,6 +121,7 @@
         {
           "name": "Oportunidades con cierre vencido",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "crm.lead",
           "aggregation": "count",
           "icon": "fa-exclamation-triangle",
@@ -131,6 +137,7 @@
         {
           "name": "Ingresos ponderados",
           "item_type": "tile",
+          "number_style": "es_cl",
           "model": "crm.lead",
           "aggregation": "sum",
           "measure_field_id": "prorated_revenue",
@@ -148,6 +155,7 @@
         {
           "name": "Embudo de oportunidades",
           "item_type": "funnel",
+          "number_style": "es_cl",
           "model": "crm.lead",
           "aggregation": "count",
           "group_by_field_id": "stage_id",
@@ -166,6 +174,7 @@
         {
           "name": "Ingresos ganados por mes",
           "item_type": "area",
+          "number_style": "es_cl",
           "model": "crm.lead",
           "aggregation": "sum",
           "measure_field_id": "expected_revenue",
@@ -189,6 +198,7 @@
         {
           "name": "Oportunidades por país",
           "item_type": "map",
+          "number_style": "es_cl",
           "map_mode": "regions",
           "model": "crm.lead",
           "aggregation": "count",
@@ -206,6 +216,7 @@
         {
           "name": "Ingresos abiertos por vendedor",
           "item_type": "bar",
+          "number_style": "es_cl",
           "model": "crm.lead",
           "aggregation": "sum",
           "measure_field_id": "expected_revenue",
@@ -227,6 +238,7 @@
         {
           "name": "Oportunidades recientes",
           "item_type": "list",
+          "number_style": "es_cl",
           "model": "crm.lead",
           "list_type": "plain",
           "sort_field_id": "create_date",

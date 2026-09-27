@@ -1209,6 +1209,11 @@ msgid "Exact"
 msgstr ""
 
 #. module: boardkit_dashboard
+#: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__number_style__es_cl
+msgid "es_CL (no decimals)"
+msgstr ""
+
+#. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
 msgid "Export CSV"

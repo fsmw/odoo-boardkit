@@ -3,7 +3,7 @@
 
 import {Component, onWillStart, useEffect, useRef, useState} from "@odoo/owl";
 import {alpha2ToNumeric, numericToAlpha2} from "./country_codes";
-import {formatItemValue, getPaletteColor, hexToRGBA} from "./utils";
+import {formatItemValue, formatNumber, getPaletteColor, hexToRGBA} from "./utils";
 import {_t} from "@web/core/l10n/translation";
 import {browser} from "@web/core/browser/browser";
 import {loadBundle} from "@web/core/assets";
@@ -78,6 +78,41 @@ function seriesTrend(values) {
     const slope = (n * sumXY - sumX * sumY) / denominator;
     const intercept = (sumY - slope * sumX) / n;
     return values.map((_, index) => intercept + slope * index);
+}
+
+function esClCartesianFormatting(config, itemType, currency) {
+    if (config.number_style !== "es_cl") {
+        return {x: {}, y: {}, plugins: {}};
+    }
+    const numberAxis = (value) => formatItemValue(value, config, currency);
+    const x = ["bar_horizontal", "scatter"].includes(itemType)
+        ? {ticks: {callback: numberAxis}}
+        : {};
+    const y = itemType === "bar_horizontal" ? {} : {ticks: {callback: numberAxis}};
+    const plugins =
+        itemType === "scatter"
+            ? {}
+            : {
+                  tooltip: {
+                      callbacks: {
+                          label(context) {
+                              const value =
+                                  itemType === "bar_horizontal"
+                                      ? context.parsed.x
+                                      : context.parsed.y;
+                              const formatted = formatItemValue(
+                                  value,
+                                  config,
+                                  currency
+                              );
+                              return context.dataset.label
+                                  ? `${context.dataset.label}: ${formatted}`
+                                  : formatted;
+                          },
+                      },
+                  },
+              };
+    return {x, y, plugins};
 }
 
 function appendPreviousPeriodDatasets(datasets, config, data) {
@@ -426,17 +461,44 @@ export class ChartRenderer extends Component {
             options.indexAxis = "y";
         }
         if (CARTESIAN.includes(itemType)) {
+            const formatting = esClCartesianFormatting(
+                config,
+                itemType,
+                this.props.currency
+            );
             options.scales = {
-                x: {stacked: config.stacked, grid: {display: false}},
-                y: {stacked: config.stacked, beginAtZero: true},
+                x: {
+                    stacked: config.stacked,
+                    grid: {display: false},
+                    ...formatting.x,
+                },
+                y: {
+                    stacked: config.stacked,
+                    beginAtZero: true,
+                    ...formatting.y,
+                },
             };
+            Object.assign(options.plugins, formatting.plugins);
         }
         if (itemType === "scatter") {
             const pointLabels = labels;
             options.plugins.tooltip = {
                 callbacks: {
-                    label(context) {
+                    label: (context) => {
                         const label = pointLabels[context.dataIndex] || "";
+                        if (config.number_style === "es_cl") {
+                            const x = formatItemValue(
+                                context.parsed.x,
+                                config,
+                                this.props.currency
+                            );
+                            const y = formatItemValue(
+                                context.parsed.y,
+                                config,
+                                this.props.currency
+                            );
+                            return `${label}: (${x}, ${y})`;
+                        }
                         return `${label}: (${context.parsed.x}, ${context.parsed.y})`;
                     },
                 },
@@ -445,18 +507,31 @@ export class ChartRenderer extends Component {
         if (PIE_LIKE.includes(itemType)) {
             options.plugins.tooltip = {
                 callbacks: {
-                    label(context) {
+                    label: (context) => {
                         const value = Number(context.parsed) || 0;
                         const series = context.dataset.data || [];
                         const total = series.reduce(
                             (sum, entry) => sum + (Number(entry) || 0),
                             0
                         );
-                        const pct = total ? ((value / total) * 100).toFixed(1) : "0.0";
+                        const pct = total
+                            ? config.number_style === "es_cl"
+                                ? formatNumber(
+                                      (value / total) * 100,
+                                      config.number_style
+                                  )
+                                : ((value / total) * 100).toFixed(1)
+                            : config.number_style === "es_cl"
+                              ? "0"
+                              : "0.0";
+                        const formatted =
+                            config.number_style === "es_cl"
+                                ? formatItemValue(value, config, this.props.currency)
+                                : value;
                         const seriesLabel = context.dataset.label || "";
                         return seriesLabel
-                            ? `${seriesLabel}: ${value} (${pct}%)`
-                            : `${value} (${pct}%)`;
+                            ? `${seriesLabel}: ${formatted} (${pct}%)`
+                            : `${formatted} (${pct}%)`;
                     },
                 },
             };
@@ -500,7 +575,14 @@ export class ChartRenderer extends Component {
                     legend: {display: false},
                     tooltip: {
                         callbacks: {
-                            label(context) {
+                            label: (context) => {
+                                if (config.number_style === "es_cl") {
+                                    return `${context.label}: ${formatItemValue(
+                                        context.parsed,
+                                        config,
+                                        this.props.currency
+                                    )}`;
+                                }
                                 return `${context.label}: ${context.parsed}`;
                             },
                         },
@@ -565,11 +647,41 @@ export class ChartRenderer extends Component {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    x: {beginAtZero: true, stacked: false, grid: {display: false}},
+                    x: {
+                        beginAtZero: true,
+                        stacked: false,
+                        grid: {display: false},
+                        ...(config.number_style === "es_cl"
+                            ? {
+                                  ticks: {
+                                      callback: (value) =>
+                                          formatItemValue(
+                                              value,
+                                              config,
+                                              this.props.currency
+                                          ),
+                                  },
+                              }
+                            : {}),
+                    },
                     y: {stacked: false, grid: {display: false}},
                 },
                 plugins: {
                     legend: {display: false},
+                    ...(config.number_style === "es_cl"
+                        ? {
+                              tooltip: {
+                                  callbacks: {
+                                      label: (context) =>
+                                          `${context.dataset.label}: ${formatItemValue(
+                                              context.parsed.x,
+                                              config,
+                                              this.props.currency
+                                          )}`,
+                                  },
+                              },
+                          }
+                        : {}),
                     boardkitBulletTarget: {
                         target: target === false ? null : target,
                         color: "#EA6175",
@@ -610,6 +722,20 @@ export class ChartRenderer extends Component {
                         position: "bottom",
                         labels: {boxWidth: 10, usePointStyle: true},
                     },
+                    ...(config.number_style === "es_cl"
+                        ? {
+                              tooltip: {
+                                  callbacks: {
+                                      label: (context) =>
+                                          `${context.dataset.label}: ${formatItemValue(
+                                              context.parsed,
+                                              config,
+                                              this.props.currency
+                                          )}`,
+                                  },
+                              },
+                          }
+                        : {}),
                 },
                 onClick: (event) => this.onChartClicked(event),
             },
@@ -691,11 +817,19 @@ export class ChartRenderer extends Component {
                     legend: {display: false},
                     tooltip: {
                         callbacks: {
-                            label(context) {
+                            label: (context) => {
                                 const value = context.raw?.value || 0;
                                 const name =
                                     context.raw?.feature?.properties?.name || "";
-                                return `${name}: ${value}`;
+                                return `${name}: ${
+                                    config.number_style === "es_cl"
+                                        ? formatItemValue(
+                                              value,
+                                              config,
+                                              this.props.currency
+                                          )
+                                        : value
+                                }`;
                             },
                         },
                     },
@@ -767,12 +901,22 @@ export class ChartRenderer extends Component {
                         mode: "nearest",
                         intersect: true,
                         callbacks: {
-                            label(context) {
+                            label: (context) => {
                                 const label =
                                     context.chart.data.labels?.[context.dataIndex] ||
                                     "";
                                 const value = context.raw?.value || 0;
-                                return label ? `${label}: ${value}` : String(value);
+                                const formatted =
+                                    config.number_style === "es_cl"
+                                        ? formatItemValue(
+                                              value,
+                                              config,
+                                              this.props.currency
+                                          )
+                                        : value;
+                                return label
+                                    ? `${label}: ${formatted}`
+                                    : String(formatted);
                             },
                         },
                     },

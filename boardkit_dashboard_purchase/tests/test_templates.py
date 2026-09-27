@@ -27,7 +27,7 @@ class TestPurchaseDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase
                 return {
                     key: without_labels(item)
                     for key, item in value.items()
-                    if key not in {"name", "description", "tags"}
+                    if key not in {"name", "description", "tags", "number_style"}
                 }
             if isinstance(value, list):
                 return [without_labels(item) for item in value]
