@@ -324,6 +324,37 @@ class TestSecurity(BoardkitDashboardCommon):
         with self.assertRaises(AccessError):
             self.tile.with_user(audience).write({"name": "Nope"})
 
+    def test_override_keeps_default_dashboard_user_safety(self):
+        """Root app override does not grant dashboard read access by itself."""
+        outsider = new_test_user(
+            self.env,
+            login="dash_outsider",
+            groups="base.group_user",
+        )
+        target = self.env.ref("contacts.menu_contacts")
+
+        self.dashboard.write(
+            {
+                "menu_parent_id": False,
+                "group_ids": [(5, 0, 0)],
+                "menu_replace_app": True,
+                "menu_replace_app_menu_id": target.id,
+            }
+        )
+
+        self.assertTrue(self.dashboard.menu_replace_backup_set)
+        self.assertFalse(
+            self.env["boardkit.dashboard"]
+            .with_user(outsider)
+            .get_dashboard_data(self.dashboard.id)
+        )
+        self.assertEqual(
+            self.env["boardkit.dashboard"]
+            .with_user(self.user)
+            .get_dashboard_data(self.dashboard.id)["id"],
+            self.dashboard.id,
+        )
+
 
 @tagged("post_install", "-at_install")
 class TestSecurityHttp(HttpCase):

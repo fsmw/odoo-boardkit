@@ -6,20 +6,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es_CL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: boardkit_dashboard
 #: model:boardkit.dashboard.template,description:boardkit_dashboard.template_contacts_overview
 msgid ""
 "\n"
-"            Contacts board with tiles, KPI, country and location maps, charts\n"
-"            and a latest-contacts list. Uses only Contacts (res.partner). The\n"
-"            location map and the geolocation items stay empty until contacts\n"
+"            Contacts board with tiles, KPI, country and location maps, "
+"charts\n"
+"            and a latest-contacts list. Uses only Contacts (res.partner). "
+"The\n"
+"            location map and the geolocation items stay empty until "
+"contacts\n"
 "            are geolocalized.\n"
 "        "
 msgstr ""
@@ -42,7 +46,7 @@ msgstr ""
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_item.py:0
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_palette.py:0
 msgid "%s (copy)"
-msgstr ""
+msgstr "%s(copia)"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -60,12 +64,12 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__refresh_interval__3600
 msgid "1 hour"
-msgstr ""
+msgstr "1 hora"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__refresh_interval__60
 msgid "1 minute"
-msgstr ""
+msgstr "1 minuto"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__refresh_interval__600
@@ -85,7 +89,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__refresh_interval__120
 msgid "2 minutes"
-msgstr ""
+msgstr "2 minutos"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__refresh_interval__1800
@@ -122,25 +126,25 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__active
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__active
 msgid "Active"
-msgstr ""
+msgstr "Activo"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_action.xml:0
 msgid "Add"
-msgstr ""
+msgstr "Añadir"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/custom_filters.xml:0
 msgid "Add Filter"
-msgstr ""
+msgstr "Añadir filtro"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_action.xml:0
 msgid "Add Item"
-msgstr ""
+msgstr "Añadir Artículo"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -178,13 +182,13 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__none
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__none
 msgid "All Time"
-msgstr ""
+msgstr "Todo el tiempo"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__group_ids
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__group_ids
 msgid "Allowed Groups"
-msgstr ""
+msgstr "Grupos permitidos"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_item__compare_previous_period
@@ -197,7 +201,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_form
 msgid "Appearance"
-msgstr ""
+msgstr "Apariencia"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_res_company__boardkit_default_color_palette
@@ -216,8 +220,8 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.res_config_settings_view_form
 msgid ""
-"Applied to new dashboards created for this company. Existing dashboards keep"
-" their own palette."
+"Applied to new dashboards created for this company. Existing dashboards keep "
+"their own palette."
 msgstr ""
 
 #. module: boardkit_dashboard
@@ -230,7 +234,7 @@ msgstr ""
 #: code:addons/boardkit_dashboard/static/src/dashboard/custom_filters.xml:0
 #: code:addons/boardkit_dashboard/static/src/dashboard/date_filter.xml:0
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_filter__default_enabled
@@ -242,7 +246,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_form
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_search
 msgid "Archived"
-msgstr ""
+msgstr "Archivado"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -259,7 +263,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__sort_dir__asc
 msgid "Ascending"
-msgstr ""
+msgstr "Ascendente"
 
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_kanban
@@ -269,8 +273,8 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard__refresh_interval
 msgid ""
-"Automatically reload the dashboard data at this interval. When enabled, item"
-" payloads are also cached server-side for up to this many seconds (per user "
+"Automatically reload the dashboard data at this interval. When enabled, item "
+"payloads are also cached server-side for up to this many seconds (per user "
 "and filters) to spare the database on wall-screen boards. Cap via system "
 "parameter boardkit_dashboard.data_cache_max_ttl."
 msgstr ""
@@ -282,7 +286,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__aggregation_2__avg
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__aggregation__avg
 msgid "Average"
-msgstr ""
+msgstr "Media"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__show_average_line
@@ -293,12 +297,12 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
 msgid "Back"
-msgstr ""
+msgstr "Volver"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__background_color
 msgid "Background Color"
-msgstr ""
+msgstr "Color de fondo"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__background_style
@@ -309,7 +313,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__item_type__bar
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item_drill__chart_type__bar
 msgid "Bar Chart"
-msgstr ""
+msgstr "Gráfica de barras"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__past_excluding_today
@@ -397,7 +401,7 @@ msgstr ""
 #: model:ir.actions.act_window,name:boardkit_dashboard.boardkit_dashboard_action
 #: model:ir.ui.menu,name:boardkit_dashboard.menu_dashboard_boards
 msgid "Boards"
-msgstr ""
+msgstr "Tableros"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__kpi_display__value
@@ -418,13 +422,13 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_template_wizard_view_form
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-car
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_tag__icon__fa-car
 msgid "Car"
-msgstr ""
+msgstr "Coche"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard__icon
@@ -436,7 +440,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_form
 msgid "Chart"
-msgstr ""
+msgstr "Gráfica"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__chart_sort
@@ -452,13 +456,13 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__client_action_id
 msgid "Client Action"
-msgstr ""
+msgstr "Acción de cliente"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-clock-o
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_tag__icon__fa-clock-o
 msgid "Clock"
-msgstr ""
+msgstr "Reloj"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-cogs
@@ -469,12 +473,12 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_palette_color__color
 msgid "Color"
-msgstr ""
+msgstr "Color"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_tag__color
 msgid "Color Index"
-msgstr ""
+msgstr "Indice de color"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__color_palette
@@ -492,12 +496,12 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_palette__color_ids
 msgid "Colors"
-msgstr ""
+msgstr "Colores"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item_column__field_id
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #. module: boardkit_dashboard
 #. odoo-python
@@ -508,18 +512,18 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__number_style__compact
 msgid "Compact"
-msgstr ""
+msgstr "Compactar"
 
 #. module: boardkit_dashboard
 #: model:ir.model,name:boardkit_dashboard.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Compañías"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__company_id
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_palette__company_id
 msgid "Company"
-msgstr ""
+msgstr "Compañia"
 
 #. module: boardkit_dashboard
 #. odoo-python
@@ -527,7 +531,9 @@ msgstr ""
 msgid ""
 "Company-specific dashboards cannot have a menu entry. Clear the company or "
 "the Parent Menu / Show as App / Replace App fields on %(name)s."
-msgstr ""
+msgstr "Los tableros específicos de una empresa no pueden tener una entrada de "
+"menú. Quite la empresa o los campos Menú padre / Mostrar como aplicación / "
+"Reemplazar aplicación en %(name)s."
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__compare_previous_period
@@ -537,32 +543,32 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__menu_replace_app_menu_id
 msgid "Replace App"
-msgstr ""
+msgstr "Aplicación a reemplazar"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__menu_replace_app
 msgid "Replace App Landing Menu"
-msgstr ""
+msgstr "Reemplazar menú de acceso de la aplicación"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard__menu_replace_app
 msgid "When enabled, this dashboard replaces the action of the selected root app menu while the dashboard is active and published."
-msgstr ""
+msgstr "Al activarlo, este tablero reemplaza la acción del menú raíz de la aplicación seleccionada mientras esté activo y publicado."
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard__menu_replace_app_menu_id
 msgid "Root app menu whose default action should open this dashboard."
-msgstr ""
+msgstr "Menú raíz de la aplicación cuya acción predeterminada abrirá este tablero."
 
 #. module: boardkit_dashboard
 #: model:ir.model,name:boardkit_dashboard.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Ajustes de configuración"
 
 #. module: boardkit_dashboard
 #: model:ir.ui.menu,name:boardkit_dashboard.menu_dashboard_config
 msgid "Configuration"
-msgstr ""
+msgstr "Configuración"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_item__preview_json
@@ -652,7 +658,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_action.xml:0
 msgid "Copy Link"
-msgstr ""
+msgstr "Copiar enlace"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -668,13 +674,13 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__aggregation_2__count
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__aggregation__count
 msgid "Count"
-msgstr ""
+msgstr "Cuenta"
 
 #. module: boardkit_dashboard
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_item.py:0
 msgid "Country"
-msgstr ""
+msgstr "País"
 
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_template_wizard_view_form
@@ -721,7 +727,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__create_uid
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template_wizard__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creado por"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__create_date
@@ -737,7 +743,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__create_date
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template_wizard__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creado el"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -749,7 +755,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-credit-card
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_tag__icon__fa-credit-card
 msgid "Credit Card"
-msgstr ""
+msgstr "Tarjeta de Crédito"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-cubes
@@ -760,7 +766,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__unit_type__monetary
 msgid "Currency"
-msgstr ""
+msgstr "divisa"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__default_color_palette__custom
@@ -769,7 +775,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__res_company__boardkit_default_color_palette__custom
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__res_config_settings__boardkit_default_color_palette__custom
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__action_id
@@ -786,7 +792,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__custom
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__custom
 msgid "Custom Range"
-msgstr ""
+msgstr "Rango personalizado"
 
 #. module: boardkit_dashboard
 #. odoo-python
@@ -818,7 +824,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_search
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_form
 msgid "Dashboard"
-msgstr ""
+msgstr "Tablero"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__color_palette__dashboard
@@ -851,7 +857,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template_wizard__name
 msgid "Dashboard Name"
-msgstr ""
+msgstr "Nombre del tablero"
 
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_list
@@ -915,7 +921,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__date_field_id
 msgid "Date Field"
-msgstr ""
+msgstr "Campo Fecha"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -935,7 +941,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__subgroup_by_granularity__day
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item_drill__group_by_granularity__day
 msgid "Day"
-msgstr ""
+msgstr "Día"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__default_palette_id
@@ -951,14 +957,14 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_tag__icon
 msgid ""
-"Default Font Awesome icon for catalogue cards. Boards without their own Icon"
-" inherit the first non-empty icon among their tags."
+"Default Font Awesome icon for catalogue cards. Boards without their own Icon "
+"inherit the first non-empty icon among their tags."
 msgstr ""
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__layout_json
 msgid "Default Layout"
-msgstr ""
+msgstr "Diseño por defecto"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__chart_sort__default
@@ -985,7 +991,7 @@ msgstr ""
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_kanban
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -1014,25 +1020,25 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__sort_dir__desc
 msgid "Descending"
-msgstr ""
+msgstr "Descendente"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__description
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__description
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__description
 msgid "Description"
-msgstr ""
+msgstr "descripción"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__refresh_interval__0
 msgid "Disabled"
-msgstr ""
+msgstr "Deshabilitado"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_action.xml:0
 msgid "Discard"
-msgstr ""
+msgstr "Descartar"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__display_name
@@ -1048,14 +1054,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__display_name
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template_wizard__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre mostrado"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_filter__domain
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__domain
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_form
 msgid "Domain"
-msgstr ""
+msgstr "Dominio"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__item_type__doughnut
@@ -1069,7 +1075,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_form
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_search
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -1092,7 +1098,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_form
 msgid "Drill Down"
-msgstr ""
+msgstr "Consultar detalle"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__drill_level_ids
@@ -1117,7 +1123,7 @@ msgstr ""
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_kanban
 msgid "Duplicate"
-msgstr ""
+msgstr "Duplicar"
 
 #. module: boardkit_dashboard
 #: model:ir.model.constraint,message:boardkit_dashboard.constraint_boardkit_dashboard_item_column_item_field_uniq
@@ -1141,13 +1147,13 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_action.xml:0
 msgid "Edit Layout"
-msgstr ""
+msgstr "Editar diseño"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -1161,7 +1167,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__res_company__boardkit_default_color_palette__electric
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__res_config_settings__boardkit_default_color_palette__electric
 msgid "Electric"
-msgstr ""
+msgstr "Eléctrico"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -1177,31 +1183,31 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_filter__default_enabled
 msgid "Enabled by Default"
-msgstr ""
+msgstr "Habilitado por defecto"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__date_to
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__date_to
 msgid "End Date"
-msgstr ""
+msgstr "Fecha final"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/date_filter.xml:0
 msgid "End date"
-msgstr ""
+msgstr "Fecha final"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-envelope
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_tag__icon__fa-envelope
 msgid "Envelope"
-msgstr ""
+msgstr "Sobre"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__number_style__exact
@@ -1218,7 +1224,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
 msgid "Export XLSX"
-msgstr ""
+msgstr "Exportar a XLSX"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -1230,22 +1236,22 @@ msgstr ""
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard__menu_as_app
 msgid ""
 "Expose the published dashboard as a top-level app in the main apps menu, "
-"using the Boardkit Dashboards module icon. The app is only visible while the"
-" dashboard is published. Not available when the dashboard is restricted to a"
-" specific company."
+"using the Boardkit Dashboards module icon. The app is only visible while the "
+"dashboard is published. Not available when the dashboard is restricted to a "
+"specific company."
 msgstr ""
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_item__drill_level_ids
 msgid ""
-"Extra grouping levels applied when the user clicks a section. The last level"
-" opens the underlying records."
+"Extra grouping levels applied when the user clicks a section. The last level "
+"opens the underlying records."
 msgstr ""
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__is_favorite
 msgid "Favorite"
-msgstr ""
+msgstr "Favorito"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__favorite_user_ids
@@ -1256,13 +1262,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__favorite_panel
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__favorite_panel__favorite
 msgid "Favorites"
-msgstr ""
+msgstr "Favoritos"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/custom_filters.xml:0
 msgid "Field"
-msgstr ""
+msgstr "Campo"
 
 #. module: boardkit_dashboard
 #. odoo-python
@@ -1287,13 +1293,13 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-file-text-o
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_tag__icon__fa-file-text-o
 msgid "File"
-msgstr ""
+msgstr "Archivo"
 
 #. module: boardkit_dashboard
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard.py:0
 msgid "Filter"
-msgstr ""
+msgstr "Filtrar"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_filter__name
@@ -1333,13 +1339,13 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__font_color
 msgid "Font Color"
-msgstr ""
+msgstr "Color de la fuente"
 
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_form
 msgid ""
-"For Map regions mode, select a field that points to Countries (res.country)."
-" When Coordinates From is set, pick that field on the related model."
+"For Map regions mode, select a field that points to Countries (res.country). "
+"When Coordinates From is set, pick that field on the related model."
 msgstr ""
 
 #. module: boardkit_dashboard
@@ -1394,7 +1400,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__item_type__gauge
 msgid "Gauge"
-msgstr ""
+msgstr "Indicador"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__gauge_max
@@ -1405,7 +1411,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-th-large
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_tag__icon__fa-th-large
 msgid "Grid"
-msgstr ""
+msgstr "Cuadrícula"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard__layout_json
@@ -1417,7 +1423,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item_drill__group_by_field_id
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_search
 msgid "Group By"
-msgstr ""
+msgstr "agrupar por"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__group_by_granularity
@@ -1452,7 +1458,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__subgroup_by_granularity__hour
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item_drill__group_by_granularity__hour
 msgid "Hour"
-msgstr ""
+msgstr "Hora"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__id
@@ -1468,7 +1474,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__id
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template_wizard__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-id-card-o
@@ -1481,13 +1487,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__icon
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_tag__icon
 msgid "Icon"
-msgstr ""
+msgstr "icono"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/catalogue/catalogue_views.xml:0
 msgid "Import"
-msgstr ""
+msgstr "Importar"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -1570,7 +1576,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item_drill__item_id
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item_measure__item_id
 msgid "Item"
-msgstr ""
+msgstr "Detalle"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__item_count
@@ -1603,7 +1609,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_form
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_kanban
 msgid "Items"
-msgstr ""
+msgstr "Elementos"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_template__payload_text
@@ -1615,7 +1621,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__item_type__kpi
 msgid "KPI"
-msgstr ""
+msgstr "KPI"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__kanban_icon
@@ -1630,7 +1636,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__key
 msgid "Key"
-msgstr ""
+msgstr "Clave"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__kpi_display
@@ -1646,7 +1652,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_item.py:0
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__chart_sort__label_asc
@@ -1679,37 +1685,37 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__last_30_days
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__last_30_days
 msgid "Last 30 Days"
-msgstr ""
+msgstr "Últimos 30 días"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__last_365_days
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__last_365_days
 msgid "Last 365 Days"
-msgstr ""
+msgstr "Últimos 365 días"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__last_7_days
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__last_7_days
 msgid "Last 7 Days"
-msgstr ""
+msgstr "Últimos 7 días"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__last_90_days
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__last_90_days
 msgid "Last 90 Days"
-msgstr ""
+msgstr "Últimos 90 días"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__last_month
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__last_month
 msgid "Last Month"
-msgstr ""
+msgstr "Mes anterior"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__last_quarter
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__last_quarter
 msgid "Last Quarter"
-msgstr ""
+msgstr "Trimestre anterior"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__write_uid
@@ -1725,7 +1731,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__write_uid
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template_wizard__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Última actualización por"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__write_date
@@ -1741,25 +1747,25 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__write_date
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template_wizard__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Última actualización el"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__last_week
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__last_week
 msgid "Last Week"
-msgstr ""
+msgstr "Última Semana"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__last_year
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__last_year
 msgid "Last Year"
-msgstr ""
+msgstr "Año anterior"
 
 #. module: boardkit_dashboard
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_item.py:0
 msgid "Latitude"
-msgstr ""
+msgstr "Latitud"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__latitude_field_id
@@ -1812,19 +1818,19 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__item_type__line
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item_drill__chart_type__line
 msgid "Line Chart"
-msgstr ""
+msgstr "Gráfica de líneas"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_action.js:0
 msgid "Link copied to clipboard."
-msgstr ""
+msgstr "Enlace copiado al portapapeles."
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__item_type__list
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_form
 msgid "List"
-msgstr ""
+msgstr "Lista"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__list_column_ids
@@ -1841,13 +1847,13 @@ msgstr ""
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_action.xml:0
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
 msgid "Loading"
-msgstr ""
+msgstr "Cargando"
 
 #. module: boardkit_dashboard
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_item.py:0
 msgid "Longitude"
-msgstr ""
+msgstr "Longitud"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__longitude_field_id
@@ -1857,25 +1863,26 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:res.groups,name:boardkit_dashboard.group_dashboard_manager
 msgid "Manager"
-msgstr ""
+msgstr "Responsable"
 
 #. module: boardkit_dashboard
 #: model_terms:ir.actions.act_window,help:boardkit_dashboard.boardkit_dashboard_action
 msgid ""
 "Managers can create a board from a curated template, import a JSON\n"
-"                export, or build one from scratch with tiles, KPIs, charts and lists.\n"
+"                export, or build one from scratch with tiles, KPIs, charts "
+"and lists.\n"
 "                Published boards you can access appear here."
 msgstr ""
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__background_style__manual
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__item_type__map
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__map_field_model_id
@@ -1904,8 +1911,8 @@ msgstr ""
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_item.py:0
 msgid ""
-"Map regions mode requires a Group By field pointing to Countries on item "
-"%(name)s."
+"Map regions mode requires a Group By field pointing to Countries on item %"
+"(name)s."
 msgstr ""
 
 #. module: boardkit_dashboard
@@ -1924,7 +1931,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_item.py:0
 msgid "Maximum"
-msgstr ""
+msgstr "Máximo"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_item__record_limit
@@ -1935,12 +1942,12 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item_measure__field_id
 msgid "Measure"
-msgstr ""
+msgstr "medida"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__measure_field_id
 msgid "Measure Field"
-msgstr ""
+msgstr "Campo de medida"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__measure_x_field_id
@@ -1962,12 +1969,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__measure_ids
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_form
 msgid "Measures"
-msgstr ""
+msgstr "Medidas"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__menu_id
 msgid "Menu"
-msgstr ""
+msgstr "Menú"
 
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_form
@@ -1977,12 +1984,12 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__menu_name
 msgid "Menu Name"
-msgstr ""
+msgstr "Nombre de menú"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__menu_sequence
 msgid "Menu Sequence"
-msgstr ""
+msgstr "Secuencia de menú"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -1992,13 +1999,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item_drill__model_id
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item_measure__model_id
 msgid "Model"
-msgstr ""
+msgstr "Modelo"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_filter__model_name
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__model_name
 msgid "Model Name"
-msgstr ""
+msgstr "Nombre del modelo"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__model_summary
@@ -2016,30 +2023,30 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__subgroup_by_granularity__month
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item_drill__group_by_granularity__month
 msgid "Month"
-msgstr ""
+msgstr "Mes"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__month_to_date
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__month_to_date
 msgid "Month to Date"
-msgstr ""
+msgstr "Mes hasta la fecha"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_action.xml:0
 msgid "More options"
-msgstr ""
+msgstr "Más opciones"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
 msgid "Move"
-msgstr ""
+msgstr "Movimiento"
 
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_search
 msgid "My Favorites"
-msgstr ""
+msgstr "Mis favoritos"
 
 #. module: boardkit_dashboard
 #. odoo-python
@@ -2050,7 +2057,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_tag__name
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__name
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -2074,7 +2081,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__next_week
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__next_week
 msgid "Next Week"
-msgstr ""
+msgstr "Próxima semana"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__next_year
@@ -2086,14 +2093,14 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/list_card.xml:0
 msgid "Next page"
-msgstr ""
+msgstr "Página siguiente"
 
 #. module: boardkit_dashboard
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_item.py:0
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_form
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -2131,7 +2138,7 @@ msgstr ""
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_item.py:0
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__unit_type__none
 msgid "None"
-msgstr ""
+msgstr "Ninguno"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -2163,7 +2170,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__res_company__boardkit_default_color_palette__default
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__res_config_settings__boardkit_default_color_palette__default
 msgid "Odoo"
-msgstr ""
+msgstr "Odoo"
 
 #. module: boardkit_dashboard
 #. odoo-python
@@ -2175,7 +2182,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/date_filter.xml:0
 msgid "Open"
-msgstr ""
+msgstr "Abierto"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -2197,13 +2204,13 @@ msgstr ""
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard.py:0
 msgid "Operation not supported"
-msgstr ""
+msgstr "Operación no permitida"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/custom_filters.xml:0
 msgid "Operator"
-msgstr ""
+msgstr "Operador"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_item__map_focus_country_id
@@ -2215,15 +2222,14 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_item__map_relation_field_id
 msgid ""
-"Optional many2one on the source model. When set, the map reads its latitude,"
-" longitude and country fields from the related model, for example partner_id"
-" to plot leads on the contact coordinates."
+"Optional many2one on the source model. When set, the map reads its latitude, "
+"longitude and country fields from the related model, for example partner_id "
+"to plot leads on the contact coordinates."
 msgstr ""
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_template_wizard__name
-msgid ""
-"Optional name for the new board. Leave empty to keep the template name."
+msgid "Optional name for the new board. Leave empty to keep the template name."
 msgstr ""
 
 #. module: boardkit_dashboard
@@ -2275,7 +2281,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__menu_parent_id
 msgid "Parent Menu"
-msgstr ""
+msgstr "Menú padre"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -2295,7 +2301,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__payload_text
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_template_view_form
 msgid "Payload"
-msgstr ""
+msgstr "Carga útil"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__payload
@@ -2305,7 +2311,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__kpi_display__percent
 msgid "Percentage"
-msgstr ""
+msgstr "Porcentaje"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__layout_ids
@@ -2324,12 +2330,12 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__item_type__pie
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item_drill__chart_type__pie
 msgid "Pie Chart"
-msgstr ""
+msgstr "Gráfica circular"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__list_type__plain
 msgid "Plain"
-msgstr ""
+msgstr "Simple"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-plane
@@ -2363,7 +2369,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/item_preview_field.xml:0
 msgid "Preview"
-msgstr ""
+msgstr "Previsualizar"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__preview_json
@@ -2374,13 +2380,13 @@ msgstr ""
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_item.py:0
 msgid "Previous Period"
-msgstr ""
+msgstr "Periodo anterior"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/list_card.xml:0
 msgid "Previous page"
-msgstr ""
+msgstr "Pagina anterior"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -2388,13 +2394,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_form
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_kanban
 msgid "Publish"
-msgstr ""
+msgstr "Publicar"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__published
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_search
 msgid "Published"
-msgstr ""
+msgstr "Publicado"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -2407,7 +2413,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__subgroup_by_granularity__quarter
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item_drill__group_by_granularity__quarter
 msgid "Quarter"
-msgstr ""
+msgstr "Trimestre"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__quarter_to_date
@@ -2423,7 +2429,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__kpi_display__ratio
 msgid "Ratio"
-msgstr ""
+msgstr "Proporción"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__record_limit
@@ -2435,13 +2441,13 @@ msgstr ""
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_item.py:0
 msgid "Records"
-msgstr ""
+msgstr "Registros"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_action.xml:0
 msgid "Refresh"
-msgstr ""
+msgstr "Actualizar"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__refresh_interval
@@ -2464,13 +2470,13 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/chart_renderer.js:0
 msgid "Remaining"
-msgstr ""
+msgstr "Restantes"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/custom_filters.xml:0
 msgid "Remove filter"
-msgstr ""
+msgstr "Eliminar filtro"
 
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_form
@@ -2481,8 +2487,8 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_form
 msgid ""
-"Requires a Date Field and an active date range. Draws the previous period as"
-" a dashed series."
+"Requires a Date Field and an active date range. Draws the previous period as "
+"a dashed series."
 msgstr ""
 
 #. module: boardkit_dashboard
@@ -2514,8 +2520,8 @@ msgstr ""
 msgid ""
 "Restrict the dashboard and its menu entry to these groups. Members of these "
 "groups can open the dashboard without the Dashboard User right (useful for "
-"menus under other apps). Leave empty to allow every Dashboard User only. The"
-" Boardkit Dashboards app and configuration still require Dashboard User or "
+"menus under other apps). Leave empty to allow every Dashboard User only. The "
+"Boardkit Dashboards app and configuration still require Dashboard User or "
 "Manager."
 msgstr ""
 
@@ -2623,8 +2629,8 @@ msgstr ""
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard.py:0
 msgid ""
-"Select a default custom palette on dashboard %(name)s or pick a preset color"
-" palette."
+"Select a default custom palette on dashboard %(name)s or pick a preset color "
+"palette."
 msgstr ""
 
 #. module: boardkit_dashboard
@@ -2637,7 +2643,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/custom_filters.xml:0
 msgid "Select a value..."
-msgstr ""
+msgstr "Seleccionar un valor..."
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_filter__sequence
@@ -2648,7 +2654,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_palette_color__sequence
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Secuencia"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -2658,7 +2664,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_kanban
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_list
 msgid "Settings"
-msgstr ""
+msgstr "Ajustes"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-shopping-basket
@@ -2670,7 +2676,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-shopping-cart
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_tag__icon__fa-shopping-cart
 msgid "Shopping Cart"
-msgstr ""
+msgstr "Cesta"
 
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_form
@@ -2700,7 +2706,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__sort_field_id
 msgid "Sort By"
-msgstr ""
+msgstr "Ordenar por"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__sort_dir
@@ -2726,19 +2732,19 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__stacked
 msgid "Stacked"
-msgstr ""
+msgstr "Apilados"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__date_from
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__date_from
 msgid "Start Date"
-msgstr ""
+msgstr "Fecha de inicio"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/date_filter.xml:0
 msgid "Start date"
-msgstr ""
+msgstr "Fecha de inicio"
 
 #. module: boardkit_dashboard
 #. odoo-python
@@ -2776,13 +2782,13 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__aggregation__sum
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__kpi_display__sum
 msgid "Sum"
-msgstr ""
+msgstr "Suma"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-sun-o
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_tag__icon__fa-sun-o
 msgid "Sun"
-msgstr ""
+msgstr "Domingo"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__default_color_palette__sunset
@@ -2798,13 +2804,14 @@ msgstr ""
 #: model:ir.ui.menu,name:boardkit_dashboard.menu_dashboard_tags
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_form
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetas"
 
 #. module: boardkit_dashboard
 #: model_terms:ir.actions.act_window,help:boardkit_dashboard.boardkit_dashboard_tag_action
 msgid ""
 "Tags help classify dashboards in the catalogue. Set an icon so\n"
-"                boards that use the tag show it on their catalogue card (the\n"
+"                boards that use the tag show it on their catalogue card "
+"(the\n"
 "                first tag with an icon wins)."
 msgstr ""
 
@@ -2816,7 +2823,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-bullseye
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_tag__icon__fa-bullseye
 msgid "Target"
-msgstr ""
+msgstr "Objetivo"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__target_value
@@ -2839,7 +2846,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-tasks
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_tag__icon__fa-tasks
 msgid "Tasks"
-msgstr ""
+msgstr "Tareas"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_item__group_by_model_id
@@ -2859,7 +2866,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_template_wizard__template_id
 msgid "Template"
-msgstr ""
+msgstr "Plantilla"
 
 #. module: boardkit_dashboard
 #. odoo-python
@@ -2882,13 +2889,13 @@ msgstr ""
 #: model:ir.actions.act_window,name:boardkit_dashboard.boardkit_dashboard_template_action
 #: model:ir.ui.menu,name:boardkit_dashboard.menu_dashboard_templates
 msgid "Templates"
-msgstr ""
+msgstr "Plantillas"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_action.js:0
 msgid "The Fullscreen mode was denied by the browser"
-msgstr ""
+msgstr "El navegador rechazó el modo de pantalla completa"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -2925,25 +2932,25 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__this_month
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__this_month
 msgid "This Month"
-msgstr ""
+msgstr "Este mes"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__this_quarter
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__this_quarter
 msgid "This Quarter"
-msgstr ""
+msgstr "Este trimestre"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__this_week
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__this_week
 msgid "This Week"
-msgstr ""
+msgstr "Esta semana"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__this_year
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__this_year
 msgid "This Year"
-msgstr ""
+msgstr "Este año"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -2966,13 +2973,13 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__today
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__today
 msgid "Today"
-msgstr ""
+msgstr "Hoy"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__tomorrow
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__tomorrow
 msgid "Tomorrow"
-msgstr ""
+msgstr "Mañana"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -2986,7 +2993,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/chart_renderer.js:0
 msgid "Track"
-msgstr ""
+msgstr "Rastreo"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_tag__color
@@ -3013,7 +3020,7 @@ msgstr ""
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_search
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__unit_symbol
@@ -3037,7 +3044,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_form
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_view_kanban
 msgid "Unpublish"
-msgstr ""
+msgstr "No publicado"
 
 #. module: boardkit_dashboard
 #. odoo-python
@@ -3062,7 +3069,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/catalogue/catalogue_views.xml:0
 msgid "Use template"
-msgstr ""
+msgstr "Usar plantilla"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard_item__group_by_granularity
@@ -3074,7 +3081,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_layout__user_id
 #: model:res.groups,name:boardkit_dashboard.group_dashboard_user
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-user-plus
@@ -3086,7 +3093,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-users
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_tag__icon__fa-users
 msgid "Users"
-msgstr ""
+msgstr "Usuarios"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -3096,7 +3103,7 @@ msgstr ""
 #: code:addons/boardkit_dashboard/static/src/dashboard/custom_filters.xml:0
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_form
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__chart_sort__value_asc
@@ -3128,7 +3135,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__subgroup_by_granularity__week
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item_drill__group_by_granularity__week
 msgid "Week"
-msgstr ""
+msgstr "Semana"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__week_to_date
@@ -3155,32 +3162,32 @@ msgstr ""
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__subgroup_by_granularity__year
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item_drill__group_by_granularity__year
 msgid "Year"
-msgstr ""
+msgstr "Año"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__year_to_date
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__year_to_date
 msgid "Year to Date"
-msgstr ""
+msgstr "Desde el inicio del año hasta la fecha"
 
 #. module: boardkit_dashboard
 #. odoo-python
 #: code:addons/boardkit_dashboard/models/boardkit_dashboard_item.py:0
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_item_view_form
 msgid "Yes"
-msgstr ""
+msgstr "Si"
 
 #. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__date_filter__yesterday
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__date_filter__yesterday
 msgid "Yesterday"
-msgstr ""
+msgstr "Ayer"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/chart_renderer.xml:0
 msgid "Zoom in"
-msgstr ""
+msgstr "Acercar"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -3192,7 +3199,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/chart_renderer.xml:0
 msgid "Zoom out"
-msgstr ""
+msgstr "Alejarse"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -3204,13 +3211,13 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/custom_filters.js:0
 msgid "contains"
-msgstr ""
+msgstr "contiene"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/custom_filters.js:0
 msgid "does not contain"
-msgstr ""
+msgstr "no contiene"
 
 #. module: boardkit_dashboard
 #: model_terms:ir.ui.view,arch_db:boardkit_dashboard.boardkit_dashboard_palette_view_form
@@ -3226,7 +3233,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/custom_filters.js:0
 msgid "is"
-msgstr ""
+msgstr "es"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -3238,7 +3245,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/custom_filters.js:0
 msgid "is not"
-msgstr ""
+msgstr "no es"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
@@ -3262,7 +3269,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/date_filter.xml:0
 msgid "to"
-msgstr ""
+msgstr "a"
 
 #. module: boardkit_dashboard
 #. odoo-javascript

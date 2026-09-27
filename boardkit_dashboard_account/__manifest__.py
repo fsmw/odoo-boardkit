@@ -14,6 +14,7 @@
     "depends": ["boardkit_dashboard", "account"],
     "data": [
         "data/boardkit_dashboard_templates.xml",
+        "data/boardkit_dashboard_templates_es_cl.xml",
     ],
     "images": [
         "static/description/banner.png",

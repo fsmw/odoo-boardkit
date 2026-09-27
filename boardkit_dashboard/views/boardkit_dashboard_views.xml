@@ -93,7 +93,14 @@
                                 name="menu_parent_id"
                                 options="{'no_create': True}"
                                 readonly="company_id"
-                                invisible="menu_as_app"
+                                invisible="menu_as_app or menu_replace_app"
+                            />
+                            <field name="menu_replace_app" readonly="company_id" />
+                            <field
+                                name="menu_replace_app_menu_id"
+                                options="{'no_create': True}"
+                                readonly="company_id"
+                                invisible="not menu_replace_app"
                             />
                             <field
                                 name="menu_name"

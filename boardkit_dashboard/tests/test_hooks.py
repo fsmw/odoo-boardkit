@@ -21,3 +21,20 @@ class TestUninstallHook(BoardkitDashboardCommon):
         uninstall_hook(self.env)
         self.assertFalse(menu.exists())
         self.assertFalse(action.exists())
+
+    def test_uninstall_hook_restores_overridden_app_actions(self):
+        target = self.env.ref("contacts.menu_contacts")
+        original_action = target.action
+        self.dashboard.write(
+            {
+                "menu_parent_id": False,
+                "menu_replace_app": True,
+                "menu_replace_app_menu_id": target.id,
+            }
+        )
+        self.assertNotEqual(target.action, original_action)
+
+        uninstall_hook(self.env)
+
+        self.assertTrue(target.exists())
+        self.assertEqual(target.action, original_action)

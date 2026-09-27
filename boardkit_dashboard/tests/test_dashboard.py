@@ -96,6 +96,108 @@ class TestDashboard(BoardkitDashboardCommon):
         self.assertFalse(dashboard.menu_as_app)
         self.assertFalse(dashboard.menu_id)
 
+    def test_company_bound_dashboard_cannot_replace_app_menu(self):
+        company_2 = self.env["res.company"].create({"name": "Override Company"})
+        target = self.env.ref("contacts.menu_contacts")
+        self.dashboard.write(
+            {
+                "menu_parent_id": False,
+                "menu_replace_app": True,
+                "menu_replace_app_menu_id": target.id,
+            }
+        )
+        self.assertTrue(self.dashboard.menu_replace_backup_set)
+        self.dashboard.company_id = company_2
+        self.assertFalse(self.dashboard.menu_replace_app)
+        self.assertFalse(self.dashboard.menu_replace_app_menu_id)
+        self.assertFalse(self.dashboard.menu_replace_backup_set)
+
+    def test_replace_app_override_lifecycle(self):
+        target = self.env.ref("contacts.menu_contacts")
+        original_action = target.action
+
+        self.dashboard.write(
+            {
+                "menu_parent_id": False,
+                "menu_replace_app": True,
+                "menu_replace_app_menu_id": target.id,
+            }
+        )
+        self.assertTrue(self.dashboard.client_action_id)
+        self.assertEqual(target.action._name, "ir.actions.client")
+        self.assertEqual(target.action.id, self.dashboard.client_action_id.id)
+        self.assertEqual(self.dashboard.menu_replace_bound_menu_id, target)
+        self.assertTrue(self.dashboard.menu_replace_backup_set)
+        self.assertEqual(
+            self.dashboard.menu_replace_original_action, original_action or False
+        )
+
+        self.dashboard.action_unpublish()
+        self.assertEqual(target.action, original_action)
+        self.assertFalse(self.dashboard.menu_replace_bound_menu_id)
+        self.assertFalse(self.dashboard.menu_replace_backup_set)
+
+        self.dashboard.action_publish()
+        self.assertEqual(target.action._name, "ir.actions.client")
+        self.assertEqual(target.action.id, self.dashboard.client_action_id.id)
+
+        self.dashboard.action_archive()
+        self.assertEqual(target.action, original_action)
+        self.assertFalse(self.dashboard.menu_replace_bound_menu_id)
+        self.assertFalse(self.dashboard.menu_replace_backup_set)
+
+    def test_replace_app_override_takeover(self):
+        target = self.env.ref("contacts.menu_contacts")
+        original_action = target.action
+        first = self.dashboard
+        first.write(
+            {
+                "menu_parent_id": False,
+                "menu_replace_app": True,
+                "menu_replace_app_menu_id": target.id,
+            }
+        )
+
+        second = self.env["boardkit.dashboard"].create(
+            {
+                "name": "Second Owner",
+                "published": True,
+                "menu_replace_app": True,
+                "menu_replace_app_menu_id": target.id,
+            }
+        )
+
+        self.assertEqual(target.action._name, "ir.actions.client")
+        self.assertEqual(target.action.id, second.client_action_id.id)
+        self.assertFalse(first.menu_replace_bound_menu_id)
+        self.assertFalse(first.menu_replace_backup_set)
+        self.assertEqual(second.menu_replace_bound_menu_id, target)
+        self.assertTrue(second.menu_replace_backup_set)
+        self.assertEqual(second.menu_replace_original_action, original_action or False)
+
+        second.write({"menu_replace_app": False})
+        self.assertEqual(target.action, original_action)
+
+    def test_app_entry_override_labels_are_translated_in_es_cl(self):
+        self.env["res.lang"]._activate_lang("es_CL")
+        fields = (
+            self.env["boardkit.dashboard"]
+            .with_context(lang="es_CL")
+            .fields_get(["menu_replace_app", "menu_replace_app_menu_id"])
+        )
+        self.assertEqual(
+            fields["menu_replace_app"]["string"],
+            "Reemplazar menú de acceso de la aplicación",
+        )
+        self.assertEqual(
+            fields["menu_replace_app"]["help"],
+            "Al activarlo, este tablero reemplaza la acción del menú raíz de la "
+            "aplicación seleccionada mientras esté activo y publicado.",
+        )
+        self.assertEqual(
+            fields["menu_replace_app_menu_id"]["string"], "Aplicación a reemplazar"
+        )
+
     def test_company_bound_dashboard_cannot_have_menu(self):
         company_2 = self.env["res.company"].create({"name": "Menu Company"})
         parent = self.env.ref("boardkit_dashboard.menu_dashboard_root")

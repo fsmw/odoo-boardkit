@@ -65,3 +65,15 @@ class TestAccountDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase)
         self.assertIn("payment_state", column_names)
         self.assertIn("amount_residual", column_names)
         self.assertIn("invoice_date_due", column_names)
+
+    def test_create_from_template_account_invoicing_spanish(self):
+        template = self.env.ref(
+            "boardkit_dashboard_account.template_account_invoicing_es_cl"
+        )
+        self.assertEqual(template.name, "Tablero Facturacion ES")
+        self.assertIn("cuentas por cobrar", template.description)
+
+        dashboard_ids = self.env["boardkit.dashboard"].create_from_template(template.id)
+        dashboard = self.env["boardkit.dashboard"].browse(dashboard_ids)
+        self.assertEqual(dashboard.name, "Tablero Facturacion ES")
+        self.assertIn("Facturacion de clientes", dashboard.description)

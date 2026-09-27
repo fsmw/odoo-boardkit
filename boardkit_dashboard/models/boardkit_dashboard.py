@@ -24,6 +24,7 @@ KANBAN_PALETTE_LIMIT = 5
 USER_GROUP = "boardkit_dashboard.group_dashboard_user"
 MANAGER_GROUP = "boardkit_dashboard.group_dashboard_manager"
 DEFAULT_MENU_WEB_ICON = "boardkit_dashboard,static/description/icon.png"
+MENU_SYNC_CONTEXT_KEY = "boardkit_skip_menu_sync"
 
 # Catalogue cards inherit the first non-empty tag icon; this is the fallback.
 KANBAN_DEFAULT_ICON = "fa-th-large"
@@ -159,6 +160,24 @@ class BoardkitDashboard(models.Model):
         "created while the dashboard is published. Not available when the "
         "dashboard is restricted to a specific company.",
     )
+    menu_replace_app = fields.Boolean(
+        string="Replace App Landing Menu",
+        help="When enabled, this dashboard replaces the action of the selected "
+        "root app menu while the dashboard is active and published.",
+    )
+    menu_replace_app_menu_id = fields.Many2one(
+        comodel_name="ir.ui.menu",
+        string="Replace App",
+        domain="[('parent_id', '=', False), ('active', '=', True)]",
+        help="Root app menu whose default action should open this dashboard.",
+    )
+    menu_replace_bound_menu_id = fields.Many2one(
+        comodel_name="ir.ui.menu",
+        readonly=True,
+        copy=False,
+    )
+    menu_replace_original_action = fields.Char(readonly=True, copy=False)
+    menu_replace_backup_set = fields.Boolean(readonly=True, copy=False)
     menu_as_app = fields.Boolean(
         string="Show as App",
         help="Expose the published dashboard as a top-level app in the main "
@@ -426,15 +445,26 @@ class BoardkitDashboard(models.Model):
                     )
                 )
 
-    @api.constrains("company_id", "menu_parent_id", "menu_as_app")
+    @api.constrains(
+        "company_id",
+        "menu_parent_id",
+        "menu_as_app",
+        "menu_replace_app",
+        "menu_replace_app_menu_id",
+    )
     def _check_company_bound_has_no_menu(self):
         for rec in self:
-            if rec.company_id and (rec.menu_parent_id or rec.menu_as_app):
+            if rec.company_id and (
+                rec.menu_parent_id
+                or rec.menu_as_app
+                or rec.menu_replace_app
+                or rec.menu_replace_app_menu_id
+            ):
                 raise ValidationError(
                     _(
                         "Company-specific dashboards cannot have a menu "
                         "entry. Clear the company or the Parent Menu / "
-                        "Show as App fields on %(name)s.",
+                        "Show as App / Replace App fields on %(name)s.",
                         name=rec.name,
                     )
                 )
@@ -444,15 +474,36 @@ class BoardkitDashboard(models.Model):
         if self.company_id:
             self.menu_parent_id = False
             self.menu_as_app = False
+            self.menu_replace_app = False
+            self.menu_replace_app_menu_id = False
 
     @api.onchange("menu_as_app")
     def _onchange_menu_as_app(self):
         if self.menu_as_app:
             self.menu_parent_id = False
+            self.menu_replace_app = False
+            self.menu_replace_app_menu_id = False
 
     @api.onchange("menu_parent_id")
     def _onchange_menu_parent_id(self):
         if self.menu_parent_id:
+            self.menu_as_app = False
+            self.menu_replace_app = False
+            self.menu_replace_app_menu_id = False
+
+    @api.onchange("menu_replace_app")
+    def _onchange_menu_replace_app(self):
+        if self.menu_replace_app:
+            self.menu_parent_id = False
+            self.menu_as_app = False
+        else:
+            self.menu_replace_app_menu_id = False
+
+    @api.onchange("menu_replace_app_menu_id")
+    def _onchange_menu_replace_app_menu_id(self):
+        if self.menu_replace_app_menu_id:
+            self.menu_replace_app = True
+            self.menu_parent_id = False
             self.menu_as_app = False
 
     # ------------------------------------------------------------------
@@ -506,6 +557,19 @@ class BoardkitDashboard(models.Model):
             if vals.get("company_id"):
                 vals["menu_parent_id"] = False
                 vals["menu_as_app"] = False
+                vals["menu_replace_app"] = False
+                vals["menu_replace_app_menu_id"] = False
+            if vals.get("menu_replace_app") or vals.get("menu_replace_app_menu_id"):
+                vals["menu_as_app"] = False
+                vals["menu_parent_id"] = False
+                if (
+                    vals.get("menu_replace_app_menu_id")
+                    and "menu_replace_app" not in vals
+                ):
+                    vals["menu_replace_app"] = True
+            if vals.get("menu_as_app") or vals.get("menu_parent_id"):
+                vals["menu_replace_app"] = False
+                vals["menu_replace_app_menu_id"] = False
             if not vals.get("default_color_palette"):
                 company = self.env.company
                 if vals.get("company_id"):
@@ -518,6 +582,7 @@ class BoardkitDashboard(models.Model):
 
     def write(self, vals):
         vals = dict(vals)
+        skip_sync = self.env.context.get(MENU_SYNC_CONTEXT_KEY)
         # Intercept before super() so read-only users can toggle favorites
         # without needing write ACL on the dashboard.
         if "is_favorite" in vals:
@@ -531,7 +596,19 @@ class BoardkitDashboard(models.Model):
         if vals.get("company_id"):
             vals["menu_parent_id"] = False
             vals["menu_as_app"] = False
+            vals["menu_replace_app"] = False
+            vals["menu_replace_app_menu_id"] = False
+        if vals.get("menu_replace_app") or vals.get("menu_replace_app_menu_id"):
+            vals["menu_as_app"] = False
+            vals["menu_parent_id"] = False
+            if vals.get("menu_replace_app_menu_id") and "menu_replace_app" not in vals:
+                vals["menu_replace_app"] = True
+        if vals.get("menu_as_app") or vals.get("menu_parent_id"):
+            vals["menu_replace_app"] = False
+            vals["menu_replace_app_menu_id"] = False
         res = super().write(vals)
+        if skip_sync:
+            return res
         menu_fields = {
             "name",
             "active",
@@ -539,6 +616,8 @@ class BoardkitDashboard(models.Model):
             "menu_name",
             "menu_parent_id",
             "menu_as_app",
+            "menu_replace_app",
+            "menu_replace_app_menu_id",
             "menu_sequence",
             "group_ids",
         }
@@ -547,8 +626,12 @@ class BoardkitDashboard(models.Model):
         return res
 
     def unlink(self):
+        self._restore_app_override()
+        actions = self.mapped("client_action_id")
         self._remove_menu_entry()
-        return super().unlink()
+        res = super().unlink()
+        actions.sudo().unlink()
+        return res
 
     def copy(self, default=None):
         self.ensure_one()
@@ -557,6 +640,8 @@ class BoardkitDashboard(models.Model):
             name=_("%s (copy)", self.name),
             menu_parent_id=False,
             menu_as_app=False,
+            menu_replace_app=False,
+            menu_replace_app_menu_id=False,
             published=False,
         )
         new = super().copy(default)
@@ -581,43 +666,138 @@ class BoardkitDashboard(models.Model):
         for rec in self:
             if not rec.published or not (rec.menu_as_app or rec.menu_parent_id):
                 rec._remove_menu_entry()
-                continue
-            if not rec.client_action_id:
-                rec.client_action_id = (
-                    self.env["ir.actions.client"]
-                    .sudo()
-                    .create(
-                        {
-                            "name": rec.name,
-                            "tag": "boardkit_dashboard",
-                            "params": {"dashboard_id": rec.id},
-                        }
-                    )
+            else:
+                rec._ensure_client_action()
+                # Menus pointing to client actions are not filtered by model
+                # access, so an empty groups_id would expose the menu to every
+                # internal user. Fall back to the dashboard user group.
+                menu_groups = rec.group_ids or self.env.ref(USER_GROUP)
+                menu_vals = {
+                    "name": rec.menu_name or rec.name,
+                    "parent_id": False if rec.menu_as_app else rec.menu_parent_id.id,
+                    "sequence": rec.menu_sequence,
+                    "action": f"ir.actions.client,{rec.client_action_id.id}",
+                    "groups_id": [(6, 0, menu_groups.ids)],
+                    "active": rec.active,
+                    # Root apps use the module icon; submenu entries have none.
+                    "web_icon": (DEFAULT_MENU_WEB_ICON if rec.menu_as_app else False),
+                }
+                if rec.menu_id:
+                    rec.menu_id.sudo().write(menu_vals)
+                else:
+                    rec.menu_id = self.env["ir.ui.menu"].sudo().create(menu_vals)
+
+        self._sync_app_override()
+        self._cleanup_orphan_client_actions()
+
+    def _ensure_client_action(self):
+        self.ensure_one()
+        if not self.client_action_id:
+            self.client_action_id = (
+                self.env["ir.actions.client"]
+                .sudo()
+                .create(
+                    {
+                        "name": self.name,
+                        "tag": "boardkit_dashboard",
+                        "params": {"dashboard_id": self.id},
+                    }
                 )
-            else:
-                rec.client_action_id.sudo().name = rec.name
-            # Menus pointing to client actions are not filtered by model
-            # access, so an empty groups_id would expose the menu to every
-            # internal user. Fall back to the dashboard user group.
-            menu_groups = rec.group_ids or self.env.ref(USER_GROUP)
-            menu_vals = {
-                "name": rec.menu_name or rec.name,
-                "parent_id": False if rec.menu_as_app else rec.menu_parent_id.id,
-                "sequence": rec.menu_sequence,
-                "action": f"ir.actions.client,{rec.client_action_id.id}",
-                "groups_id": [(6, 0, menu_groups.ids)],
-                "active": rec.active,
-                # Root apps use the module icon; submenu entries have none.
-                "web_icon": (DEFAULT_MENU_WEB_ICON if rec.menu_as_app else False),
-            }
-            if rec.menu_id:
-                rec.menu_id.sudo().write(menu_vals)
-            else:
-                rec.menu_id = self.env["ir.ui.menu"].sudo().create(menu_vals)
+            )
+            return
+        self.client_action_id.sudo().name = self.name
+
+    def _should_apply_app_override(self):
+        self.ensure_one()
+        return bool(
+            self.active
+            and self.published
+            and self.menu_replace_app
+            and self.menu_replace_app_menu_id
+        )
+
+    def _sync_app_override(self):
+        for rec in self:
+            if not rec._should_apply_app_override():
+                rec._restore_app_override()
+                continue
+            rec._ensure_client_action()
+            rec._claim_app_override(rec.menu_replace_app_menu_id.sudo())
+
+    def _claim_app_override(self, target_menu):
+        self.ensure_one()
+        if not target_menu:
+            self._restore_app_override()
+            return
+
+        # Changing the target always restores the previously overridden menu.
+        if (
+            self.menu_replace_bound_menu_id
+            and self.menu_replace_bound_menu_id != target_menu
+        ):
+            self._restore_app_override()
+
+        # Keep one owner per overridden app menu: previous owner is restored
+        # before this dashboard takes ownership.
+        previous_owner = self.search(
+            [
+                ("id", "!=", self.id),
+                ("menu_replace_bound_menu_id", "=", target_menu.id),
+                ("menu_replace_backup_set", "=", True),
+            ],
+            limit=1,
+        )
+        if previous_owner:
+            previous_owner._restore_app_override()
+
+        if (
+            not self.menu_replace_backup_set
+            or self.menu_replace_bound_menu_id != target_menu
+        ):
+            self.with_context(**{MENU_SYNC_CONTEXT_KEY: True}).sudo().write(
+                {
+                    "menu_replace_bound_menu_id": target_menu.id,
+                    "menu_replace_original_action": target_menu.action or False,
+                    "menu_replace_backup_set": True,
+                }
+            )
+
+        target_menu.sudo().write(
+            {"action": f"ir.actions.client,{self.client_action_id.id}"}
+        )
+
+    def _restore_app_override(self):
+        for rec in self:
+            target = rec.menu_replace_bound_menu_id.sudo()
+            if target and rec.menu_replace_backup_set:
+                target.write({"action": rec.menu_replace_original_action or False})
+            if rec.menu_replace_bound_menu_id or rec.menu_replace_backup_set:
+                rec.with_context(**{MENU_SYNC_CONTEXT_KEY: True}).sudo().write(
+                    {
+                        "menu_replace_bound_menu_id": False,
+                        "menu_replace_original_action": False,
+                        "menu_replace_backup_set": False,
+                    }
+                )
+
+    @api.model
+    def _restore_all_app_overrides(self):
+        dashboards = self.with_context(active_test=False).search(
+            [("menu_replace_backup_set", "=", True)]
+        )
+        dashboards._restore_app_override()
+
+    def _cleanup_orphan_client_actions(self):
+        for rec in self:
+            if (
+                rec.client_action_id
+                and not rec.menu_id
+                and not rec.menu_replace_bound_menu_id
+            ):
+                rec.client_action_id.sudo().unlink()
 
     def _remove_menu_entry(self):
         self.menu_id.sudo().unlink()
-        self.client_action_id.sudo().unlink()
 
     def action_open_dashboard(self):
         self.ensure_one()
