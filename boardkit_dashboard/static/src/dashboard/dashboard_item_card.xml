@@ -232,6 +232,155 @@
                     onOpenGroup="(domain) => props.onDrill(domain, config.name)"
                     onPageChange="(params) => props.onPageChange(params)"
                 />
+                <!-- Bank overview -->
+                <div
+                    t-elif="config.type === 'bank_overview'"
+                    class="o_boardkit_bank_overview h-100 d-flex flex-column"
+                >
+                    <t t-if="!displayData.journals.length">
+                        <div
+                            class="d-flex h-100 align-items-center justify-content-center text-center text-muted"
+                        >
+                            <div>
+                                <i
+                                    class="fa fa-university fa-2x mb-2"
+                                    role="img"
+                                    aria-label="Banco"
+                                />
+                                <div>No hay diarios bancarios disponibles.</div>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div
+                            class="o_boardkit_bank_overview_toolbar d-flex align-items-center gap-2 mb-3"
+                        >
+                            <label
+                                class="visually-hidden"
+                                t-att-for="'bank-journal-' + config.id"
+                            >Seleccionar banco</label>
+                            <select
+                                t-att-id="'bank-journal-' + config.id"
+                                class="form-select o_boardkit_bank_journal_select"
+                                t-att-value="displayData.selected_journal_id"
+                                t-on-change="onBankJournalChange"
+                                t-att-disabled="state.bankLoading"
+                            >
+                                <option
+                                    t-foreach="displayData.journals"
+                                    t-as="journal"
+                                    t-key="journal.id"
+                                    t-att-value="journal.id"
+                                    t-esc="journal.name"
+                                />
+                            </select>
+                            <span class="small text-muted text-nowrap">
+                                <t t-if="state.bankLoading">Actualizando…</t>
+                                <t t-else="">Actualizado <t
+                                    t-esc="formatBankTime(displayData.refreshed_at)"
+                                /></t>
+                            </span>
+                        </div>
+                        <div
+                            class="o_boardkit_bank_overview_content row g-3 flex-grow-1 overflow-hidden"
+                        >
+                            <section
+                                class="o_boardkit_bank_summary col-12 col-lg-4 d-flex flex-column"
+                            >
+                                <div class="small text-muted">Saldo contable</div>
+                                <div class="o_boardkit_bank_balance">
+                                    <t
+                                        t-esc="formatBankAmount(displayData.selected_journal.balance, displayData.selected_journal.currency)"
+                                    />
+                                </div>
+                                <div class="o_boardkit_bank_counts mt-3">
+                                    <div class="d-flex justify-content-between gap-2">
+                                        <span>Por conciliar</span>
+                                        <strong
+                                            t-esc="displayData.selected_journal.number_to_reconcile"
+                                        />
+                                    </div>
+                                    <div class="d-flex justify-content-between gap-2">
+                                        <span>Por revisar</span>
+                                        <strong
+                                            t-esc="displayData.selected_journal.number_to_check"
+                                        />
+                                    </div>
+                                </div>
+                                <div
+                                    class="o_boardkit_bank_actions d-flex flex-wrap gap-2 mt-auto pt-3"
+                                >
+                                    <button
+                                        class="btn btn-primary"
+                                        t-on-click="() => onBankAction('transactions')"
+                                    >
+                                        Transacciones
+                                    </button>
+                                    <button
+                                        t-if="displayData.can_reconcile"
+                                        class="btn btn-secondary"
+                                        t-on-click="() => onBankAction('reconcile')"
+                                    >
+                                        Conciliar
+                                    </button>
+                                </div>
+                            </section>
+                            <section
+                                class="o_boardkit_bank_transactions col-12 col-lg-8 d-flex flex-column overflow-hidden"
+                            >
+                                <h3 class="h6 mb-2">Transacciones recientes</h3>
+                                <div
+                                    t-if="!displayData.transactions.length"
+                                    class="o_boardkit_bank_empty_transactions text-muted d-flex flex-grow-1 align-items-center justify-content-center text-center"
+                                >
+                                    No hay transacciones recientes para este diario.
+                                </div>
+                                <div t-else="" class="table-responsive flex-grow-1">
+                                    <table class="table table-sm align-middle mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Fecha</th>
+                                                <th scope="col">Descripción</th>
+                                                <th
+                                                    scope="col"
+                                                    class="text-end"
+                                                >Monto</th>
+                                                <th scope="col">Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr
+                                                t-foreach="displayData.transactions"
+                                                t-as="transaction"
+                                                t-key="transaction.id"
+                                            >
+                                                <td
+                                                    class="text-nowrap"
+                                                    t-esc="formatBankDate(transaction.date)"
+                                                />
+                                                <td
+                                                    class="o_boardkit_bank_transaction_label"
+                                                    t-esc="transaction.label or 'Sin descripción'"
+                                                />
+                                                <td
+                                                    class="text-end text-nowrap"
+                                                    t-esc="formatBankAmount(transaction.amount, transaction.currency)"
+                                                />
+                                                <td class="text-nowrap">
+                                                    <span
+                                                        class="badge"
+                                                        t-att-class="bankStatusClass(transaction.status)"
+                                                        t-esc="bankStatusLabel(transaction.status)"
+                                                    />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
+                    </t>
+                </div>
                 <!-- Charts -->
                 <ChartRenderer
                     t-else=""

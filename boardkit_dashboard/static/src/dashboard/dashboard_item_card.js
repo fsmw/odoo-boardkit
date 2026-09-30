@@ -42,9 +42,11 @@ export class DashboardItemCard extends Component {
 
     setup() {
         this.notification = useService("notification");
+        this.actionService = useService("action");
         this.state = useState({
             drillStack: [],
             drilling: false,
+            bankLoading: false,
         });
         onWillUpdateProps((nextProps) => {
             if (
@@ -106,6 +108,77 @@ export class DashboardItemCard extends Component {
         // Expose the background as a CSS variable so inner sticky elements
         // (e.g. list headers) can stay opaque with the same color.
         return `background-color: ${background}; color: ${color}; --esc-card-bg: ${background};`;
+    }
+
+    formatBankAmount(amount, currency) {
+        return formatItemValue(
+            Number(amount || 0),
+            {number_style: "es_cl", unit: {type: "monetary"}},
+            currency
+        );
+    }
+
+    formatBankDate(value) {
+        if (!value) {
+            return "";
+        }
+        const date = new Date(`${value}T12:00:00`);
+        return Number.isNaN(date.getTime())
+            ? value
+            : date.toLocaleDateString("es-CL", {day: "2-digit", month: "short"});
+    }
+
+    formatBankTime(value) {
+        if (!value) {
+            return "";
+        }
+        const date = new Date(`${value.replace(" ", "T")}Z`);
+        return Number.isNaN(date.getTime())
+            ? ""
+            : date.toLocaleTimeString("es-CL", {hour: "2-digit", minute: "2-digit"});
+    }
+
+    bankStatusLabel(status) {
+        return (
+            {
+                reconciled: _t("Conciliada"),
+                to_reconcile: _t("Por conciliar"),
+                to_check: _t("Por revisar"),
+                draft: _t("En borrador"),
+            }[status] || _t("Pendiente")
+        );
+    }
+
+    bankStatusClass(status) {
+        return (
+            {
+                reconciled: "text-bg-success",
+                to_reconcile: "text-bg-warning",
+                to_check: "text-bg-info",
+                draft: "text-bg-secondary",
+            }[status] || "text-bg-secondary"
+        );
+    }
+
+    async onBankJournalChange(ev) {
+        const journalId = Number(ev.target.value);
+        if (!journalId || journalId === this.props.data?.selected_journal_id) {
+            return;
+        }
+        this.state.bankLoading = true;
+        try {
+            await this.props.onPageChange({bank_journal_id: journalId});
+        } finally {
+            this.state.bankLoading = false;
+        }
+    }
+
+    onBankAction(actionName) {
+        const action = this.props.data?.actions?.[actionName];
+        if (action) {
+            return this.actionService.doAction(action);
+        }
+        return undefined;
     }
 
     get tileIconStyle() {

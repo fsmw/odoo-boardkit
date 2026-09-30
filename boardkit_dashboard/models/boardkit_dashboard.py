@@ -176,7 +176,17 @@ class BoardkitDashboard(models.Model):
         readonly=True,
         copy=False,
     )
-    menu_replace_original_action = fields.Char(readonly=True, copy=False)
+    menu_replace_original_action = fields.Reference(
+        selection=[
+            ("ir.actions.report", "ir.actions.report"),
+            ("ir.actions.act_window", "ir.actions.act_window"),
+            ("ir.actions.act_url", "ir.actions.act_url"),
+            ("ir.actions.server", "ir.actions.server"),
+            ("ir.actions.client", "ir.actions.client"),
+        ],
+        readonly=True,
+        copy=False,
+    )
     menu_replace_backup_set = fields.Boolean(readonly=True, copy=False)
     menu_as_app = fields.Boolean(
         string="Show as App",

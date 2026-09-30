@@ -47,3 +47,15 @@ msgstr "Facturacion de clientes con cuentas por cobrar, estado de pago y tendenc
 #: model:boardkit.dashboard.template,name:boardkit_dashboard_account.template_account_invoicing
 msgid "Invoicing Overview"
 msgstr "Resumen de facturacion"
+
+#. module: boardkit_dashboard_account
+#. odoo-python
+#: code:addons/boardkit_dashboard_account/models/boardkit_dashboard_item.py:0
+msgid "Bank Transactions"
+msgstr "Transacciones bancarias"
+
+#. module: boardkit_dashboard_account
+#. odoo-python
+#: code:addons/boardkit_dashboard_account/models/boardkit_dashboard_item.py:0
+msgid "Transactions to Reconcile"
+msgstr "Transacciones por conciliar"

@@ -149,6 +149,36 @@ msgid "Add tiles, KPIs, charts or lists."
 msgstr ""
 
 #. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.js:0
+msgid "Conciliada"
+msgstr ""
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.js:0
+msgid "Por conciliar"
+msgstr ""
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.js:0
+msgid "Por revisar"
+msgstr ""
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.js:0
+msgid "En borrador"
+msgstr ""
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.js:0
+msgid "Pendiente"
+msgstr ""
+
+#. module: boardkit_dashboard
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__icon__fa-address-book
 #: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_tag__icon__fa-address-book
 msgid "Address Book"

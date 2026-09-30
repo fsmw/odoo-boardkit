@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<odoo noupdate="1">
+<odoo noupdate="0">
     <record id="template_account_invoicing_es_cl" model="boardkit.dashboard.template">
         <field name="name">Tablero Facturacion ES</field>
         <field name="key">account_invoicing_es_cl</field>
@@ -179,6 +179,22 @@
           "index": 7
         },
         {
+          "name": "Banco y conciliación",
+          "description": "Saldo, movimientos recientes y estado de conciliación del diario seleccionado.",
+          "item_type": "bank_overview",
+          "number_style": "es_cl",
+          "model": "account.journal",
+          "aggregation": "count",
+          "domain": "[]",
+          "layout": {
+            "x": 0,
+            "y": 4,
+            "w": 12,
+            "h": 4
+          },
+          "index": 8
+        },
+        {
           "name": "Monto facturado por mes",
           "item_type": "area",
           "number_style": "es_cl",
@@ -196,11 +212,11 @@
           "domain": "[('move_type', '=', 'out_invoice'), ('state', '=', 'posted')]",
           "layout": {
             "x": 0,
-            "y": 4,
+            "y": 8,
             "w": 6,
             "h": 4
           },
-          "index": 8
+          "index": 9
         },
         {
           "name": "Top clientes por monto",
@@ -219,11 +235,11 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 6,
-            "y": 4,
+            "y": 8,
             "w": 6,
             "h": 4
           },
-          "index": 9
+          "index": 10
         },
         {
           "name": "Por estado de pago",
@@ -237,11 +253,11 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 0,
-            "y": 8,
+            "y": 12,
             "w": 6,
             "h": 4
           },
-          "index": 10
+          "index": 11
         },
         {
           "name": "Por vendedor",
@@ -260,11 +276,11 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 6,
-            "y": 8,
+            "y": 12,
             "w": 6,
             "h": 4
           },
-          "index": 11
+          "index": 12
         },
         {
           "name": "Facturas recientes",
@@ -288,11 +304,11 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 0,
-            "y": 12,
+            "y": 16,
             "w": 12,
             "h": 5
           },
-          "index": 12
+          "index": 13
         }
       ],
       "filters": [

@@ -36,3 +36,15 @@ msgstr ""
 #: model:boardkit.dashboard.template,name:boardkit_dashboard_account.template_account_invoicing
 msgid "Invoicing Overview"
 msgstr ""
+
+#. module: boardkit_dashboard_account
+#. odoo-python
+#: code:addons/boardkit_dashboard_account/models/boardkit_dashboard_item.py:0
+msgid "Bank Transactions"
+msgstr ""
+
+#. module: boardkit_dashboard_account
+#. odoo-python
+#: code:addons/boardkit_dashboard_account/models/boardkit_dashboard_item.py:0
+msgid "Transactions to Reconcile"
+msgstr ""

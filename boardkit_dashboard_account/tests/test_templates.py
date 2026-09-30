@@ -8,7 +8,10 @@ from odoo.addons.boardkit_dashboard.tests.common import BoardkitTemplateSmokeMix
 
 @tagged("post_install", "-at_install")
 class TestAccountDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
-    template_xmlids = ("boardkit_dashboard_account.template_account_invoicing",)
+    template_xmlids = (
+        "boardkit_dashboard_account.template_account_invoicing",
+        "boardkit_dashboard_account.template_account_invoicing_es_cl",
+    )
 
     def test_create_from_template_account_invoicing(self):
         template = self.env.ref("boardkit_dashboard_account.template_account_invoicing")
@@ -77,3 +80,18 @@ class TestAccountDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase)
         dashboard = self.env["boardkit.dashboard"].browse(dashboard_ids)
         self.assertEqual(dashboard.name, "Tablero Facturacion ES")
         self.assertIn("Facturacion de clientes", dashboard.description)
+        self.assertEqual(len(dashboard.item_ids), 14)
+        bank_item = dashboard.item_ids.filtered(
+            lambda item: item.item_type == "bank_overview"
+        )
+        self.assertEqual(len(bank_item), 1)
+        self.assertEqual(bank_item.model_name, "account.journal")
+        self.assertEqual(bank_item.name, "Banco y conciliación")
+        self.assertEqual(
+            len(
+                dashboard.item_ids.filtered(
+                    lambda item: item.model_name == "account.move"
+                )
+            ),
+            13,
+        )

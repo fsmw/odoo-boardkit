@@ -872,3 +872,63 @@
 body.o_boardkit_dashboard_fullscreen .o_main_navbar {
     display: none;
 }
+.o_boardkit_bank_overview {
+    min-height: 0;
+
+    .o_boardkit_bank_overview_toolbar {
+        min-height: 2.25rem;
+    }
+
+    .o_boardkit_bank_journal_select {
+        max-width: 28rem;
+        width: 70%;
+    }
+
+    .o_boardkit_bank_summary {
+        min-height: 0;
+    }
+
+    .o_boardkit_bank_balance {
+        font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+        font-weight: 700;
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+
+    .o_boardkit_bank_transactions {
+        min-height: 0;
+    }
+
+    .o_boardkit_bank_transaction_label {
+        max-width: 16rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .o_boardkit_bank_empty_transactions {
+        min-height: 5rem;
+    }
+
+    @media (min-width: 992px) {
+        .o_boardkit_bank_summary {
+            border-right: 1px solid var(--border-color, #dee2e6);
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .o_boardkit_bank_overview_toolbar {
+            align-items: flex-start !important;
+            flex-direction: column;
+        }
+
+        .o_boardkit_bank_journal_select {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .o_boardkit_bank_transaction_label {
+            max-width: 8rem;
+        }
+    }
+}

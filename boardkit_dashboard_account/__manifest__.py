@@ -5,7 +5,7 @@
     "name": "Boardkit Dashboard Account",
     "summary": "Invoicing dashboard template for Boardkit",
     "category": "Accounting",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.1.0",
     "website": "https://github.com/Escodoo/odoo-boardkit",
     "author": "Escodoo",
     "maintainers": ["marcelsavegnago"],
@@ -20,6 +20,11 @@
         "static/description/banner.png",
     ],
     "demo": ["demo/boardkit_dashboard_demo.xml"],
+    "assets": {
+        "web.assets_tests": [
+            "boardkit_dashboard_account/static/tests/tours/**/*",
+        ],
+    },
     "auto_install": True,
     "installable": True,
 }

@@ -148,6 +148,36 @@ msgstr "Añadir Artículo"
 
 #. module: boardkit_dashboard
 #. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.js:0
+msgid "Conciliada"
+msgstr "Conciliada"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.js:0
+msgid "Por conciliar"
+msgstr "Por conciliar"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.js:0
+msgid "Por revisar"
+msgstr "Por revisar"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.js:0
+msgid "En borrador"
+msgstr "En borrador"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.js:0
+msgid "Pendiente"
+msgstr "Pendiente"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_action.xml:0
 msgid "Add tiles, KPIs, charts or lists."
 msgstr ""
