@@ -1,0 +1,201 @@
+// Copyright 2026 SMWLAB
+// License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
+// Clean visual style: neutral cards, quiet chrome, color reserved for data.
+// Card rules hang off .o_boardkit_card_clean (not the dashboard root) so the
+// item form preview, which renders a card outside the board, themes as well.
+
+$bk-clean-radius: 14px;
+$bk-clean-small-text: 0.8125rem;
+
+.o_boardkit_dashboard.o_boardkit_style_clean {
+    .o_boardkit_dashboard_topbar {
+        padding: 0.75rem 1.5rem;
+
+        .o_boardkit_dashboard_topbar_title {
+            h5 {
+                font-size: 1rem;
+                font-weight: 600;
+            }
+
+            .o_boardkit_dashboard_draft_badge {
+                border-color: transparent;
+                background-color: rgba($o-warning, 0.16);
+                color: darken($o-warning, 28%);
+                font-weight: 500;
+                text-transform: none;
+                letter-spacing: 0;
+            }
+        }
+    }
+
+    .o_boardkit_dashboard_content {
+        padding: 1.5rem !important;
+    }
+
+    .o_boardkit_dashboard_grid {
+        max-width: 1680px;
+        margin-inline: auto;
+    }
+
+    @media (max-width: 767.98px) {
+        .o_boardkit_dashboard_content {
+            padding: 0.75rem !important;
+        }
+    }
+}
+
+.o_boardkit_dashboard_card.o_boardkit_card_clean {
+    // currentColor-based tokens keep muted text and hairlines legible on
+    // neutral cards, manually colored cards and dark mode alike.
+    --bk-muted: color-mix(in srgb, currentColor 62%, transparent);
+    --bk-hairline: color-mix(in srgb, currentColor 11%, transparent);
+    --bk-hover: color-mix(in srgb, currentColor 4%, transparent);
+    // Inline styles override these three for items with a manual background.
+    --esc-card-bg: #{$o-view-background-color};
+    background-color: $o-view-background-color;
+    color: $o-main-text-color;
+
+    border: 1px solid var(--bk-hairline);
+    border-radius: $bk-clean-radius;
+    box-shadow: none;
+    transition: border-color 0.15s ease-in-out;
+
+    &:hover {
+        border-color: color-mix(in srgb, currentColor 22%, transparent);
+        box-shadow: none;
+    }
+
+    .o_boardkit_dashboard_card_header {
+        margin-top: 0.3rem;
+    }
+
+    .o_boardkit_dashboard_card_title {
+        font-size: 0.9375rem;
+        font-weight: 600;
+    }
+
+    &[data-item-type="tile"] .o_boardkit_dashboard_card_title,
+    &[data-item-type="kpi"] .o_boardkit_dashboard_card_title {
+        color: var(--bk-muted);
+        font-size: $bk-clean-small-text;
+        font-weight: 500;
+    }
+
+    .o_boardkit_dashboard_card_subtitle {
+        margin-top: -0.1rem;
+        color: var(--bk-muted);
+        font-size: $bk-clean-small-text;
+    }
+
+    .o_boardkit_dashboard_big_value {
+        font-size: 1.75rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .o_boardkit_dashboard_value_caption {
+        font-size: $bk-clean-small-text;
+    }
+
+    .o_boardkit_dashboard_tile_icon {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+        border-radius: 10px;
+        background-color: color-mix(
+            in srgb,
+            var(--bk-accent, currentColor) 12%,
+            transparent
+        );
+        color: var(--bk-accent, currentColor);
+
+        .fa {
+            font-size: 1.15rem;
+        }
+    }
+
+    // Variation reads as text, not as a filled badge competing with the value.
+    .o_boardkit_delta {
+        font-size: $bk-clean-small-text;
+        font-weight: 600;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+
+        .fa {
+            margin-right: 0.2em;
+            font-size: 0.75em;
+        }
+
+        &.o_boardkit_delta_up {
+            color: darken($o-success, 8%);
+        }
+
+        &.o_boardkit_delta_down {
+            color: $o-danger;
+        }
+    }
+
+    .progress {
+        height: 6px;
+        border-radius: 3px;
+        background-color: color-mix(
+            in srgb,
+            var(--bk-accent, currentColor) 16%,
+            transparent
+        );
+
+        .progress-bar {
+            border-radius: 3px;
+            background-color: var(--bk-accent, currentColor);
+        }
+    }
+
+    .o_boardkit_dashboard_list {
+        .table {
+            --table-color: inherit;
+            --table-border-color: var(--bk-hairline);
+            --table-hover-bg: var(--bk-hover);
+            --table-hover-color: inherit;
+            --table-bg: transparent;
+        }
+
+        thead th {
+            border-bottom-color: var(--bk-hairline);
+            color: var(--bk-muted);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        td {
+            font-variant-numeric: tabular-nums;
+        }
+    }
+
+    // The item menu stays out of the way until the card is being used.
+    @media (hover: hover) {
+        .o_boardkit_dashboard_card_menu {
+            opacity: 0;
+            transition: opacity 0.15s ease-in-out;
+        }
+
+        &:hover .o_boardkit_dashboard_card_menu,
+        &:focus-within .o_boardkit_dashboard_card_menu {
+            opacity: 0.6;
+        }
+
+        .o_boardkit_dashboard_card_menu:hover,
+        .o_boardkit_dashboard_card_menu:focus-visible {
+            opacity: 1;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        .o_boardkit_dashboard_card_menu {
+            transition: none;
+        }
+    }
+}

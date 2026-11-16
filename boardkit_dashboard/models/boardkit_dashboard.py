@@ -15,6 +15,7 @@ from odoo.tools.safe_eval import safe_eval
 
 from ..tools.date_ranges import DATE_RANGE_PRESETS, get_date_range
 from ..tools.palettes import PRESET_PALETTE_COLORS, PRESET_PALETTE_SELECTION
+from ..tools.visual_styles import DEFAULT_VISUAL_STYLE, VISUAL_STYLE_SELECTION
 from .boardkit_dashboard_palette import HEX_COLOR_PATTERN
 from .boardkit_dashboard_tag import TAG_ICON_SELECTION
 
@@ -135,6 +136,13 @@ class BoardkitDashboard(models.Model):
         comodel_name="boardkit.dashboard.palette",
         string="Default Custom Palette",
         ondelete="restrict",
+    )
+    visual_style = fields.Selection(
+        selection=VISUAL_STYLE_SELECTION,
+        default=DEFAULT_VISUAL_STYLE,
+        required=True,
+        help="Clean shows neutral cards where color is reserved for the data. "
+        "Classic fills tiles and KPIs with the palette color.",
     )
     layout_json = fields.Text(
         string="Default Layout",
@@ -856,6 +864,7 @@ class BoardkitDashboard(models.Model):
             "is_favorite": dashboard.is_favorite,
             "is_manager": is_manager,
             "published": bool(dashboard.published),
+            "visual_style": dashboard.visual_style,
             "refresh_interval": int(dashboard.refresh_interval or "0"),
             "date_filter": dashboard.date_filter,
             "date_from": fields.Datetime.to_string(dashboard.date_from) or False,
@@ -1068,6 +1077,7 @@ class BoardkitDashboard(models.Model):
                     "menu_sequence": dashboard.menu_sequence,
                     "default_color_palette": dashboard.default_color_palette or False,
                     "default_palette": dashboard.default_palette_id.name or False,
+                    "visual_style": dashboard.visual_style,
                     "palettes": [
                         {"name": palette.name, "colors": palette._color_list()}
                         for palette in palettes
@@ -1279,6 +1289,9 @@ class BoardkitDashboard(models.Model):
             board_icon = data.get("icon") or False
             if board_icon not in valid_icons:
                 board_icon = False
+            visual_style = data.get("visual_style")
+            if visual_style not in dict(VISUAL_STYLE_SELECTION):
+                visual_style = DEFAULT_VISUAL_STYLE
             dashboard = self.create(
                 {
                     "name": data.get("name") or _("Imported Dashboard"),
@@ -1293,6 +1306,7 @@ class BoardkitDashboard(models.Model):
                     "default_palette_id": default_palette.id
                     if default_key == "custom"
                     else False,
+                    "visual_style": visual_style,
                 }
             )
             layout = {}

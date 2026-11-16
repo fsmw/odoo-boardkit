@@ -2,13 +2,16 @@
 // License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import {Component, onWillUpdateProps, useState} from "@odoo/owl";
+import {RankingCard, SegmentedCard} from "./grouped_cards";
 import {
     contrastFontColor,
     contrastingPaletteColor,
     darkestPaletteColor,
     formatItemValue,
     formatNumber,
+    getPaletteColor,
     hexToRGBA,
+    isCleanStyle,
 } from "./utils";
 import {ChartRenderer} from "./chart_renderer";
 import {Dropdown} from "@web/core/dropdown/dropdown";
@@ -17,9 +20,33 @@ import {ListCard} from "./list_card";
 import {_t} from "@web/core/l10n/translation";
 import {useService} from "@web/core/utils/hooks";
 
+// Items whose body is one aggregated value rather than a chart or list.
+const SINGLE_VALUE_TYPES = ["tile", "kpi", "headline"];
+// Grouped items that can show a compact message instead of an empty plot.
+const EMPTY_STATE_TYPES = [
+    "bar",
+    "bar_horizontal",
+    "line",
+    "area",
+    "pie",
+    "doughnut",
+    "polar",
+    "radar",
+    "funnel",
+    "ranking",
+    "segmented",
+];
+
 export class DashboardItemCard extends Component {
     static template = "boardkit_dashboard.ItemCard";
-    static components = {ChartRenderer, ListCard, Dropdown, DropdownItem};
+    static components = {
+        ChartRenderer,
+        ListCard,
+        RankingCard,
+        SegmentedCard,
+        Dropdown,
+        DropdownItem,
+    };
     static props = {
         config: Object,
         data: {type: [Object, {value: null}], optional: true},
@@ -87,6 +114,84 @@ export class DashboardItemCard extends Component {
         return this.state.drillStack.length > 0;
     }
 
+    get isClean() {
+        return isCleanStyle(this.config);
+    }
+
+    /**
+     * Clean cards stay neutral unless the item sets a manual background, so
+     * the stylesheet (and dark mode) owns their surface and text colors.
+     */
+    get isNeutralCard() {
+        return this.isClean && this.config.background_style === "palette";
+    }
+
+    get accentColor() {
+        return getPaletteColor(this.config, 0);
+    }
+
+    get cardClass() {
+        return this.isClean ? "o_boardkit_card_clean" : "";
+    }
+
+    get deltaClass() {
+        const positive = this.previousDelta?.positive;
+        if (this.isClean) {
+            return positive
+                ? "o_boardkit_delta o_boardkit_delta_up"
+                : "o_boardkit_delta o_boardkit_delta_down";
+        }
+        return positive ? "badge text-bg-success" : "badge text-bg-danger";
+    }
+
+    /** Secondary line under a tile value. */
+    get valueCaption() {
+        if (!this.isClean) {
+            return this.aggregationLabel;
+        }
+        return this.previousDelta ? _t("vs previous period") : "";
+    }
+
+    /** Visible one-line context for charts and lists in the Clean style. */
+    get cardSubtitle() {
+        const withBigValue = SINGLE_VALUE_TYPES.includes(this.config.type);
+        return this.isClean && !withBigValue ? this.config.description : "";
+    }
+
+    /** True when a grouped item has nothing to plot for the active filters. */
+    get isEmptyGroupedData() {
+        const data = this.displayData;
+        return (
+            EMPTY_STATE_TYPES.includes(this.displayConfig.type) &&
+            Array.isArray(data?.labels) &&
+            data.labels.length === 0
+        );
+    }
+
+    /**
+     * Headline sentence split around the value so it can be emphasized.
+     * The variation suffix only joins when a previous period is available.
+     */
+    get headlineParts() {
+        const headline = this.config.headline || {};
+        const template = headline.template || `${this.config.name}: {value}`;
+        const [before, ...rest] = template.split("{value}");
+        const parts = [{text: before, strong: false}];
+        if (rest.length) {
+            parts.push({text: this.formattedValue, strong: true});
+            parts.push({text: rest.join("{value}"), strong: false});
+        }
+        const delta = this.previousDelta;
+        if (delta && headline.delta_suffix) {
+            const signed = `${delta.positive ? "+" : "\u2212"}${delta.value}`;
+            parts.push({
+                text: headline.delta_suffix.replace("{delta}", signed),
+                strong: false,
+            });
+        }
+        return parts.filter((part) => part.text);
+    }
+
     get themedColors() {
         // Palette-driven theming only applies to tiles and KPIs; other item
         // types render their data with the palette already.
@@ -104,6 +209,9 @@ export class DashboardItemCard extends Component {
     }
 
     get cardStyle() {
+        if (this.isNeutralCard) {
+            return `--bk-accent: ${this.accentColor};`;
+        }
         const {background, color} = this.themedColors;
         // Expose the background as a CSS variable so inner sticky elements
         // (e.g. list headers) can stay opaque with the same color.
@@ -182,11 +290,17 @@ export class DashboardItemCard extends Component {
     }
 
     get tileIconStyle() {
+        if (this.isNeutralCard) {
+            return "";
+        }
         const color = this.themedColors.color;
         return `background-color: ${hexToRGBA(color, 0.12)}; color: ${color};`;
     }
 
     get kpiProgressTrackStyle() {
+        if (this.isNeutralCard) {
+            return "";
+        }
         let style = "height: 8px;";
         if (this.config.background_style === "palette") {
             // Semi-transparent font color so the empty track stays visible
@@ -198,6 +312,9 @@ export class DashboardItemCard extends Component {
 
     get kpiProgressStyle() {
         let style = `width: ${this.targetProgress || 0}%;`;
+        if (this.isNeutralCard) {
+            return style;
+        }
         if (this.config.background_style === "palette") {
             // Prefer a palette swatch that contrasts with the card background;
             // never reuse the darkest color (which is the background itself).
@@ -335,7 +452,7 @@ export class DashboardItemCard extends Component {
         if (this.isDrilled) {
             return;
         }
-        if (["tile", "kpi"].includes(this.config.type) && this.data?.domain) {
+        if (SINGLE_VALUE_TYPES.includes(this.config.type) && this.data?.domain) {
             this.handleDrill(this.data.domain, this.config.name);
         }
     }

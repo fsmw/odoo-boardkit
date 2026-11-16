@@ -49,7 +49,7 @@
                                 <page
                                     name="value"
                                     string="Value"
-                                    invisible="item_type not in ['tile', 'kpi', 'gauge']"
+                                    invisible="item_type not in ['tile', 'kpi', 'gauge', 'headline']"
                                 >
                                     <group>
                                         <group>
@@ -58,11 +58,11 @@
                                                 name="measure_field_id"
                                                 options="{'no_create': True}"
                                                 invisible="aggregation == 'count'"
-                                                required="aggregation != 'count' and item_type in ['tile', 'kpi', 'gauge']"
+                                                required="aggregation != 'count' and item_type in ['tile', 'kpi', 'gauge', 'headline']"
                                             />
                                             <field
                                                 name="compare_previous_period"
-                                                invisible="item_type not in ['tile', 'kpi']"
+                                                invisible="item_type not in ['tile', 'kpi', 'headline']"
                                                 help="Requires a Date Field and an active date range on the item or dashboard."
                                             />
                                         </group>
@@ -131,7 +131,7 @@
                                 <page
                                     name="chart"
                                     string="Chart"
-                                    invisible="item_type in ['tile', 'kpi', 'gauge', 'list']"
+                                    invisible="item_type in ['tile', 'kpi', 'gauge', 'list', 'headline']"
                                 >
                                     <group>
                                         <group>
@@ -237,7 +237,7 @@
                                             />
                                             <field
                                                 name="legend_visible"
-                                                invisible="item_type in ['bullet', 'map']"
+                                                invisible="item_type in ['bullet', 'map', 'ranking', 'segmented']"
                                             />
                                             <field
                                                 name="target_enabled"
@@ -398,6 +398,16 @@
                                             <field
                                                 name="icon"
                                                 invisible="item_type != 'tile'"
+                                            />
+                                            <field
+                                                name="headline_template"
+                                                invisible="item_type != 'headline'"
+                                                placeholder="Net sales of {value} this month"
+                                            />
+                                            <field
+                                                name="headline_delta_suffix"
+                                                invisible="item_type != 'headline'"
+                                                placeholder=", {delta} vs previous period"
                                             />
                                             <field
                                                 name="color_palette"

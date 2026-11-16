@@ -106,6 +106,26 @@ export const PALETTES = {
         "#2F7D4F",
         "#C05B17",
     ],
+    indigo: [
+        "#4F46E5",
+        "#A5B4FC",
+        "#C4C7D4",
+        "#1E1B4B",
+        "#818CF8",
+        "#E0E7FF",
+        "#6B7280",
+        "#312E81",
+    ],
+    teal: [
+        "#1F7A6D",
+        "#8CCFC2",
+        "#C9D1CE",
+        "#12332E",
+        "#4FA899",
+        "#D7EEE9",
+        "#6B7280",
+        "#0F5248",
+    ],
 };
 
 export function paletteColors(config) {
@@ -114,6 +134,10 @@ export function paletteColors(config) {
         (custom && custom.length ? custom : PALETTES[config.color_palette]) ||
         PALETTES.default
     );
+}
+
+export function isCleanStyle(config) {
+    return config.visual_style === "clean";
 }
 
 export function getPaletteColor(config, index) {
@@ -209,6 +233,9 @@ export const DEFAULT_ITEM_SIZE = {
     funnel: {w: 4, h: 5},
     map: {w: 6, h: 6},
     list: {w: 6, h: 5},
+    headline: {w: 12, h: 2},
+    ranking: {w: 6, h: 5},
+    segmented: {w: 4, h: 4},
     chart: {w: 6, h: 5},
 };
 

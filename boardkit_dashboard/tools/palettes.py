@@ -12,6 +12,8 @@ PRESET_PALETTE_SELECTION = [
     ("vivid", "Vivid"),
     ("earth", "Earth"),
     ("royal", "Royal"),
+    ("indigo", "Indigo (tonal)"),
+    ("teal", "Teal (tonal)"),
 ]
 
 # Keep in sync with static/src/dashboard/utils.js ``PALETTES``.
@@ -113,5 +115,27 @@ PRESET_PALETTE_COLORS = {
         "#6D2E77",
         "#2F7D4F",
         "#C05B17",
+    ],
+    # Tonal presets: one hue in three strengths plus neutrals, so color
+    # carries the data instead of decorating it.
+    "indigo": [
+        "#4F46E5",
+        "#A5B4FC",
+        "#C4C7D4",
+        "#1E1B4B",
+        "#818CF8",
+        "#E0E7FF",
+        "#6B7280",
+        "#312E81",
+    ],
+    "teal": [
+        "#1F7A6D",
+        "#8CCFC2",
+        "#C9D1CE",
+        "#12332E",
+        "#4FA899",
+        "#D7EEE9",
+        "#6B7280",
+        "#0F5248",
     ],
 }
