@@ -134,6 +134,15 @@ export class DashboardItemCard extends Component {
         return this.isClean ? "o_boardkit_card_clean" : "";
     }
 
+    get titleClass() {
+        // A headline carries its own sentence; its title stays in the DOM
+        // for assistive technology and automation only.
+        if (this.config.type === "headline") {
+            return "visually-hidden";
+        }
+        return this.isClean ? "" : "fw-bold";
+    }
+
     get deltaClass() {
         const positive = this.previousDelta?.positive;
         if (this.isClean) {

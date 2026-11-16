@@ -13,9 +13,8 @@
                 t-on-pointerdown="(ev) => props.editable and props.onDragStart(ev)"
             >
                 <span
-                    t-if="config.type !== 'headline'"
                     class="o_boardkit_dashboard_card_title text-truncate"
-                    t-att-class="isClean ? '' : 'fw-bold'"
+                    t-att-class="titleClass"
                     t-att-title="config.description || config.name"
                     t-esc="config.name"
                 />

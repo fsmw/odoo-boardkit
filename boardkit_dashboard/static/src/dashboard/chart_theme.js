@@ -159,7 +159,9 @@ function themeDataset(dataset, itemType, stacked, tokens) {
         const themed = {
             ...dataset,
             borderWidth: 2,
-            tension: 0.3,
+            // Monotone smoothing never overshoots, so a curve cannot dip
+            // below zero between two non-negative points.
+            cubicInterpolationMode: "monotone",
             pointRadius: singlePoint ? 4 : 0,
             pointHoverRadius: 4,
             pointHitRadius: 12,
