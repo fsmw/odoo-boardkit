@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="boardkit_dashboard.IconPickerField">
+        <div class="o_boardkit_icon_picker">
+            <div class="d-flex align-items-center gap-2">
+                <span
+                    class="o_boardkit_icon_picker_preview d-flex align-items-center justify-content-center"
+                    aria-hidden="true"
+                >
+                    <i t-att-class="previewClass" />
+                </span>
+                <t t-if="props.readonly">
+                    <span t-esc="value" />
+                </t>
+                <t t-else="">
+                    <input
+                        type="text"
+                        class="o_input flex-grow-1"
+                        t-att-id="props.id"
+                        t-att-value="value"
+                        placeholder="ph-chart-bar"
+                        t-on-change="onInput"
+                    />
+                    <button
+                        type="button"
+                        class="btn btn-secondary btn-sm text-nowrap"
+                        t-att-aria-expanded="state.open ? 'true' : 'false'"
+                        t-on-click="toggle"
+                    >Browse icons</button>
+                </t>
+            </div>
+            <div
+                t-if="state.open and !props.readonly"
+                class="o_boardkit_icon_picker_panel mt-2"
+            >
+                <input
+                    type="search"
+                    class="o_input mb-2"
+                    placeholder="Search icons"
+                    aria-label="Search icons"
+                    t-att-value="state.query"
+                    t-on-input="onSearch"
+                />
+                <div
+                    t-if="results.length"
+                    class="o_boardkit_icon_picker_grid"
+                    role="listbox"
+                    aria-label="Icons"
+                >
+                    <button
+                        t-foreach="results"
+                        t-as="name"
+                        t-key="name"
+                        type="button"
+                        class="o_boardkit_icon_picker_option"
+                        role="option"
+                        t-att-class="name === value ? 'o_selected' : ''"
+                        t-att-aria-selected="name === value ? 'true' : 'false'"
+                        t-att-title="label(name)"
+                        t-att-aria-label="label(name)"
+                        t-on-click="() => this.select(name)"
+                    >
+                        <i t-att-class="'ph-duotone ' + name" aria-hidden="true" />
+                    </button>
+                </div>
+                <div t-else="" class="text-muted small" t-esc="emptyMessage" />
+            </div>
+        </div>
+    </t>
+</templates>

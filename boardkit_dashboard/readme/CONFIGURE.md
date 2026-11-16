@@ -51,3 +51,11 @@ optionally, _Headline Variation Suffix_ with `{delta}`, which is appended only
 when a previous-period variation exists. _Ranking_ lists groups as rows with an
 inline bar, and _Segmented Bar_ splits one bar by share of the total. Grouped
 items with nothing to plot show a short message instead of an empty chart.
+
+In the Clean style, tiles and KPIs show their icon as a small badge next to the
+title, drawn with Phosphor duotone icons; each card takes the next color of the
+palette. Pick the icon with _Browse icons_ on the item form. Font Awesome names
+stored on existing items are translated to Phosphor when an equivalent exists
+and keep rendering with Font Awesome otherwise. When _Compare Previous Period_
+is enabled the variation shows as a pill, and as _No baseline_ when there is no
+earlier figure. The item description shows as a footnote at the bottom.

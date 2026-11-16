@@ -88,6 +88,7 @@
           "unit_type": "monetary",
           "domain": "[('move_type', '=', 'out_refund'), ('state', '=', 'posted')]",
           "date_field_id": "invoice_date",
+          "compare_previous_period": true,
           "layout": {
             "x": 9,
             "y": 2,
@@ -144,6 +145,7 @@
           "icon": "fa-pencil-square-o",
           "domain": "[('move_type', '=', 'out_invoice'), ('state', '=', 'draft')]",
           "date_field_id": "invoice_date",
+          "compare_previous_period": true,
           "layout": {
             "x": 6,
             "y": 4,
@@ -160,6 +162,7 @@
           "icon": "fa-check-square-o",
           "domain": "[('move_type', '=', 'out_invoice'), ('state', '=', 'posted')]",
           "date_field_id": "invoice_date",
+          "compare_previous_period": true,
           "layout": {
             "x": 9,
             "y": 4,

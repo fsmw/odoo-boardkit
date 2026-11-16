@@ -1,0 +1,52 @@
+// Copyright 2026 SMWLAB
+// License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
+.o_boardkit_icon_picker {
+    $option-size: 36px;
+
+    .o_boardkit_icon_picker_preview {
+        flex: 0 0 28px;
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background-color: rgba($o-brand-primary, 0.12);
+        color: $o-brand-primary;
+        font-size: 18px;
+    }
+
+    .o_boardkit_icon_picker_panel {
+        padding: 0.5rem;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        background-color: $o-view-background-color;
+    }
+
+    .o_boardkit_icon_picker_grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax($option-size, 1fr));
+        gap: 4px;
+        max-height: 220px;
+        overflow-y: auto;
+    }
+
+    .o_boardkit_icon_picker_option {
+        height: $option-size;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        background: transparent;
+        color: inherit;
+        font-size: 20px;
+        line-height: 1;
+
+        &:hover,
+        &:focus-visible {
+            border-color: $border-color;
+            background-color: rgba($o-brand-primary, 0.08);
+        }
+
+        &.o_selected {
+            border-color: $o-brand-primary;
+            color: $o-brand-primary;
+        }
+    }
+}

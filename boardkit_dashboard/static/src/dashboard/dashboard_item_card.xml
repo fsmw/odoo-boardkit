@@ -13,6 +13,13 @@
                 t-on-pointerdown="(ev) => props.editable and props.onDragStart(ev)"
             >
                 <span
+                    t-if="showHeaderIcon"
+                    class="o_boardkit_dashboard_card_icon d-flex align-items-center justify-content-center"
+                    aria-hidden="true"
+                >
+                    <i t-att-class="icon.className" />
+                </span>
+                <span
                     class="o_boardkit_dashboard_card_title text-truncate"
                     t-att-class="titleClass"
                     t-att-title="config.description || config.name"
@@ -143,16 +150,17 @@
                     t-on-click="onBodyClicked"
                 >
                     <span
+                        t-if="!showHeaderIcon"
                         class="o_boardkit_dashboard_tile_icon d-flex align-items-center justify-content-center rounded"
                         t-att-style="tileIconStyle"
                     >
                         <i
-                            t-att-class="'fa fa-2x ' + (config.icon || 'fa-bar-chart')"
+                            t-att-class="icon.className + ' fa-2x'"
                             role="img"
                             aria-label="Tile icon"
                         />
                     </span>
-                    <div class="overflow-hidden">
+                    <div class="overflow-hidden flex-grow-1">
                         <div class="d-flex align-items-baseline gap-2 flex-wrap">
                             <div
                                 class="o_boardkit_dashboard_big_value"
@@ -160,17 +168,22 @@
                             />
                             <span t-if="previousDelta" t-att-class="deltaClass">
                                 <i
-                                    t-att-class="'fa ' + (previousDelta.positive ? 'fa-arrow-up' : 'fa-arrow-down')"
+                                    t-att-class="trendIconClass"
                                     role="img"
                                     aria-label="Trend"
                                 />
-                                <t t-esc="previousDelta.value" />
+                                <t t-esc="trendLabel" />
                             </span>
+                            <span
+                                t-if="hasNoBaseline"
+                                class="o_boardkit_delta ms-auto o_boardkit_delta_none"
+                                title="No earlier figure to compare with"
+                            >No baseline</span>
                         </div>
                         <div
-                            t-if="valueCaption"
+                            t-if="bodyCaption"
                             class="o_boardkit_dashboard_value_caption text-truncate opacity-75"
-                            t-esc="valueCaption"
+                            t-esc="bodyCaption"
                         />
                     </div>
                 </div>
@@ -188,12 +201,17 @@
                         />
                         <span t-if="previousDelta" t-att-class="deltaClass">
                             <i
-                                t-att-class="'fa ' + (previousDelta.positive ? 'fa-arrow-up' : 'fa-arrow-down')"
+                                t-att-class="trendIconClass"
                                 role="img"
                                 aria-label="Trend"
                             />
-                            <t t-esc="previousDelta.value" />
+                            <t t-esc="trendLabel" />
                         </span>
+                        <span
+                            t-if="hasNoBaseline"
+                            class="o_boardkit_delta ms-auto o_boardkit_delta_none"
+                            title="No earlier figure to compare with"
+                        >No baseline</span>
                     </div>
                     <t
                         t-if="config.kpi.mode === 'target' and data.target !== undefined"
@@ -435,6 +453,12 @@
                     onSectionClicked.bind="onChartSectionClicked"
                 />
             </div>
+            <div
+                t-if="cardFootnote"
+                class="o_boardkit_dashboard_card_footnote px-3 text-truncate"
+                t-att-title="cardFootnote"
+                t-esc="cardFootnote"
+            />
             <div
                 t-if="displayData and displayData.truncated"
                 class="px-3 pb-2 small text-muted text-truncate"

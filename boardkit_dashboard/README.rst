@@ -168,6 +168,15 @@ exists. *Ranking* lists groups as rows with an inline bar, and
 *Segmented Bar* splits one bar by share of the total. Grouped items with
 nothing to plot show a short message instead of an empty chart.
 
+In the Clean style, tiles and KPIs show their icon as a small badge next
+to the title, drawn with Phosphor duotone icons; each card takes the
+next color of the palette. Pick the icon with *Browse icons* on the item
+form. Font Awesome names stored on existing items are translated to
+Phosphor when an equivalent exists and keep rendering with Font Awesome
+otherwise. When *Compare Previous Period* is enabled the variation shows
+as a pill, and as *No baseline* when there is no earlier figure. The
+item description shows as a footnote at the bottom.
+
 Usage
 =====
 

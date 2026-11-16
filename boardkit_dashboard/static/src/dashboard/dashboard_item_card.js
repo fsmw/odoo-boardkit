@@ -1,9 +1,10 @@
 // Copyright 2026 - TODAY, Marcel Savegnago <marcel.savegnago@escodoo.com.br>
 // License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-import {Component, onWillUpdateProps, useState} from "@odoo/owl";
+import {Component, onWillStart, onWillUpdateProps, useState} from "@odoo/owl";
 import {RankingCard, SegmentedCard} from "./grouped_cards";
 import {
+    badgePaletteColor,
     contrastFontColor,
     contrastingPaletteColor,
     darkestPaletteColor,
@@ -13,6 +14,7 @@ import {
     hexToRGBA,
     isCleanStyle,
 } from "./utils";
+import {ensurePhosphor, resolveIcon} from "./icon_map";
 import {ChartRenderer} from "./chart_renderer";
 import {Dropdown} from "@web/core/dropdown/dropdown";
 import {DropdownItem} from "@web/core/dropdown/dropdown_item";
@@ -20,6 +22,10 @@ import {ListCard} from "./list_card";
 import {_t} from "@web/core/l10n/translation";
 import {useService} from "@web/core/utils/hooks";
 
+// Variations of at least this many percent are shown without decimals.
+const TREND_WHOLE_PERCENT_FROM = 10;
+// Cards that show an icon badge next to their title in the Clean style.
+const ICON_BADGE_TYPES = ["tile", "kpi"];
 // Items whose body is one aggregated value rather than a chart or list.
 const SINGLE_VALUE_TYPES = ["tile", "kpi", "headline"];
 // Grouped items that can show a compact message instead of an empty plot.
@@ -75,7 +81,9 @@ export class DashboardItemCard extends Component {
             drilling: false,
             bankLoading: false,
         });
+        onWillStart(() => this.loadIconFont(this.props.config));
         onWillUpdateProps((nextProps) => {
+            this.loadIconFont(nextProps.config);
             if (
                 nextProps.filterStamp !== this.props.filterStamp ||
                 nextProps.config !== this.props.config
@@ -118,6 +126,78 @@ export class DashboardItemCard extends Component {
         return isCleanStyle(this.config);
     }
 
+    /** Fetch the Phosphor font when this card is going to draw with it. */
+    loadIconFont(config) {
+        const explicit = (config.icon || "").startsWith("ph-");
+        return isCleanStyle(config) || explicit ? ensurePhosphor() : null;
+    }
+
+    get icon() {
+        return resolveIcon(this.config.icon, this.isClean);
+    }
+
+    /** Clean cards carry the icon as a small badge beside the title. */
+    get showHeaderIcon() {
+        return this.isClean && ICON_BADGE_TYPES.includes(this.config.type);
+    }
+
+    /**
+     * Variation as shown in the trend pill. The Clean pill is read at a
+     * glance, so it drops decimals once the change reaches two digits.
+     */
+    get trendLabel() {
+        const delta = this.previousDelta;
+        if (!delta) {
+            return "";
+        }
+        if (!this.isClean || !Number.isFinite(delta.percent)) {
+            return delta.value;
+        }
+        const rounded =
+            delta.percent >= TREND_WHOLE_PERCENT_FROM
+                ? Math.round(delta.percent)
+                : Math.round(delta.percent * 10) / 10;
+        return `${formatNumber(rounded, "exact")}%`;
+    }
+
+    get trendIconClass() {
+        const up = this.previousDelta?.positive;
+        if (this.isClean) {
+            return up ? "ph-duotone ph-trend-up" : "ph-duotone ph-trend-down";
+        }
+        return up ? "fa fa-arrow-up" : "fa fa-arrow-down";
+    }
+
+    /**
+     * True when a comparison was requested but there is no earlier figure,
+     * so the card can say so instead of silently dropping the trend.
+     */
+    get hasNoBaseline() {
+        const compares =
+            this.config.compare_previous_period && this.config.type !== "headline";
+        return Boolean(
+            this.isClean &&
+                compares &&
+                this.data &&
+                !this.data.error &&
+                !this.previousDelta
+        );
+    }
+
+    /** Caption under the value: the Clean style moves it to the footnote. */
+    get bodyCaption() {
+        return this.isClean ? "" : this.valueCaption;
+    }
+
+    /** One quiet line at the bottom of a Clean tile or KPI. */
+    get cardFootnote() {
+        if (!this.showHeaderIcon) {
+            return "";
+        }
+        const caption = this.config.type === "tile" ? this.valueCaption : "";
+        return this.config.description || caption;
+    }
+
     /**
      * Clean cards stay neutral unless the item sets a manual background, so
      * the stylesheet (and dark mode) owns their surface and text colors.
@@ -127,6 +207,9 @@ export class DashboardItemCard extends Component {
     }
 
     get accentColor() {
+        if (ICON_BADGE_TYPES.includes(this.config.type)) {
+            return badgePaletteColor(this.config, this.config.accent_index);
+        }
         return getPaletteColor(this.config, 0);
     }
 
@@ -147,8 +230,8 @@ export class DashboardItemCard extends Component {
         const positive = this.previousDelta?.positive;
         if (this.isClean) {
             return positive
-                ? "o_boardkit_delta o_boardkit_delta_up"
-                : "o_boardkit_delta o_boardkit_delta_down";
+                ? "o_boardkit_delta ms-auto o_boardkit_delta_up"
+                : "o_boardkit_delta ms-auto o_boardkit_delta_down";
         }
         return positive ? "badge text-bg-success" : "badge text-bg-danger";
     }
@@ -402,6 +485,7 @@ export class DashboardItemCard extends Component {
             ((data.value - data.previous_value) / Math.abs(data.previous_value)) * 100;
         return {
             value: `${formatNumber(Math.abs(delta), this.config.number_style)}%`,
+            percent: Math.abs(delta),
             positive: delta >= 0,
         };
     }

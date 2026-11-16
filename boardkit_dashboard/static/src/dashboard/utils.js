@@ -157,6 +157,23 @@ function luminance(hex) {
     return 0.299 * red + 0.587 * green + 0.114 * blue;
 }
 
+// Above this perceived brightness a color is too pale to draw an icon with.
+const ICON_COLOR_MAX_LUMINANCE = 185;
+
+/**
+ * Palette color for the icon badge at ``index``, skipping tints too pale to
+ * stay legible on a light card. Falls back to the whole palette when every
+ * color is pale.
+ */
+export function badgePaletteColor(config, index) {
+    const colors = paletteColors(config);
+    const legible = colors.filter(
+        (color) => luminance(color) <= ICON_COLOR_MAX_LUMINANCE
+    );
+    const pool = legible.length ? legible : colors;
+    return pool[(index || 0) % pool.length];
+}
+
 export function darkestPaletteColor(config) {
     return paletteColors(config).reduce((darkest, color) =>
         luminance(color) < luminance(darkest) ? color : darkest

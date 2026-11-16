@@ -12,3 +12,22 @@ Third-party libraries used by `boardkit_dashboard` advanced chart types.
 These scripts expect the global `Chart` object from Odoo `web.chartjs_lib` and are loaded through the lazy bundle `boardkit_dashboard.chartjs_extensions` (only when a funnel or map item is rendered).
 
 `countries_110m.js` is kept out of `web.assets_backend` on purpose: the topology is ~260 KB and would otherwise ship to every backend user. The ChartRenderer reads `ESCODOO_WORLD_TOPOLOGY` after `ensureChartExtensions("map")`.
+
+# Vendored Phosphor icons
+
+| File | Package | License | Purpose |
+| --- | --- | --- | --- |
+| `phosphor/phosphor-duotone.css` | [@phosphor-icons/web](https://github.com/phosphor-icons/web) v2.1.2, `src/duotone/style.css` | MIT | Icon classes (`ph-duotone ph-*`) |
+| `phosphor/Phosphor-Duotone.woff2` | same package | MIT | Icon font |
+| `phosphor/icons.json` | generated from the stylesheet | MIT | Icon names for the picker |
+| `phosphor/LICENSE` | same package | MIT | License text |
+
+The stylesheet is the upstream file with one change: the `@font-face` sources
+were reduced to the woff2 file, so the woff, ttf and svg fallbacks are not
+shipped. It is loaded through the lazy bundle `boardkit_dashboard.phosphor`
+(about 400 KB), only by Clean dashboards and the icon picker.
+
+To upgrade, replace the stylesheet and font from the new package version, apply
+the same `@font-face` change and regenerate `icons.json` from the
+`.ph-duotone.ph-*:before` selectors. `tests/test_icons.py` fails when
+`static/src/dashboard/icon_map.js` points at an icon the new version removed.

@@ -119,6 +119,9 @@ CHART_TYPES = (
 # Items showing one aggregated value, optionally against the previous period.
 SINGLE_VALUE_TYPES = ("tile", "headline")
 
+# Cards that carry an icon badge; each takes the next palette color in turn.
+ICON_BADGE_TYPES = ("tile", "kpi")
+
 # Cartesian charts that can overlay a previous-period series.
 PREVIOUS_PERIOD_CHART_TYPES = (
     "bar",
@@ -894,6 +897,23 @@ class BoardkitDashboardItem(models.Model):
             return ("custom", colors) if colors else ("default", False)
         return key, False
 
+    def _accent_index(self):
+        """Return the item position among its dashboard's icon-badge cards.
+
+        The client uses it to give each card the next palette color, so a row
+        of tiles is told apart at a glance. Other item types, and items not
+        yet attached to a dashboard, use the first color.
+        """
+        self.ensure_one()
+        if self.item_type not in ICON_BADGE_TYPES:
+            return 0
+        siblings = self.dashboard_id.item_ids.filtered(
+            lambda item: item.item_type in ICON_BADGE_TYPES
+        )
+        ids = siblings._origin.ids
+        current = self._origin.id
+        return ids.index(current) if current in ids else 0
+
     def _get_config(self):
         self.ensure_one()
         palette_key, palette_colors = self._resolved_palette()
@@ -905,6 +925,7 @@ class BoardkitDashboardItem(models.Model):
             "model": self.model_name,
             "model_label": self.model_id.name,
             "icon": self.icon or "fa-bar-chart",
+            "accent_index": self._accent_index(),
             "headline": {
                 "template": self.headline_template or "",
                 "delta_suffix": self.headline_delta_suffix or "",

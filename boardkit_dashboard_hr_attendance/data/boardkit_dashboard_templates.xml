@@ -144,6 +144,7 @@
           "icon": "fa-check-circle",
           "domain": "[('overtime_status', '=', 'approved')]",
           "date_field_id": "check_in",
+          "compare_previous_period": true,
           "layout": {
             "x": 9,
             "y": 2,
