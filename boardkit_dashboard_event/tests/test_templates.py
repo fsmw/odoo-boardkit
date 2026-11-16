@@ -48,7 +48,7 @@ class TestEventDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
         self.assertEqual(rate.date_field_2_id.name, "create_date")
 
         stage_chart = dashboard.item_ids.filtered(lambda i: i.name == "Events by Stage")
-        self.assertEqual(stage_chart.item_type, "doughnut")
+        self.assertEqual(stage_chart.item_type, "segmented")
         self.assertEqual(stage_chart.group_by_field_id.name, "stage_id")
 
         recent = dashboard.item_ids.filtered(lambda i: i.name == "Recent Events")

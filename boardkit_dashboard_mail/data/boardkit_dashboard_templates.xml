@@ -151,7 +151,7 @@
         },
         {
           "name": "Activities by Type",
-          "item_type": "pie",
+          "item_type": "segmented",
           "model": "mail.activity",
           "aggregation": "count",
           "group_by_field_id": "activity_type_id",

@@ -160,7 +160,7 @@
         },
         {
           "name": "Transfers by Operation Type",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "stock.picking",
           "aggregation": "count",
           "group_by_field_id": "picking_type_id",
@@ -178,7 +178,7 @@
         },
         {
           "name": "Transfers by Status",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "stock.picking",
           "aggregation": "count",
           "group_by_field_id": "state",

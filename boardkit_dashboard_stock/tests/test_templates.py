@@ -51,7 +51,7 @@ class TestStockDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
         by_type = dashboard.item_ids.filtered(
             lambda i: i.name == "Transfers by Operation Type"
         )
-        self.assertEqual(by_type.item_type, "bar_horizontal")
+        self.assertEqual(by_type.item_type, "ranking")
         self.assertEqual(by_type.group_by_field_id.name, "picking_type_id")
 
         recent = dashboard.item_ids.filtered(lambda i: i.name == "Recent Transfers")

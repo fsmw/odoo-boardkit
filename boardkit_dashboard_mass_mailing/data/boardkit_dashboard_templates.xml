@@ -167,7 +167,7 @@
         },
         {
           "name": "Top Mailings by Opens",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "mailing.trace",
           "aggregation": "count",
           "group_by_field_id": "mass_mailing_id",
@@ -185,7 +185,7 @@
         },
         {
           "name": "Traces by Status",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "mailing.trace",
           "aggregation": "count",
           "group_by_field_id": "trace_status",

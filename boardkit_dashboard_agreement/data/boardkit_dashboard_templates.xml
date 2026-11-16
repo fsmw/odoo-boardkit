@@ -155,7 +155,7 @@
         },
         {
           "name": "Active by Partner",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "agreement",
           "aggregation": "count",
           "group_by_field_id": "partner_id",
@@ -172,7 +172,7 @@
         },
         {
           "name": "Active by Domain",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "agreement",
           "aggregation": "count",
           "group_by_field_id": "domain",

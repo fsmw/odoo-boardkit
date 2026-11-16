@@ -154,6 +154,20 @@ Configuration
    ``boardkit_dashboard.data_cache_max_ttl`` (seconds; ``0`` disables
    the cache).
 
+Each board has a *Visual Style*. *Clean* (the default) renders neutral
+cards, themed charts and text-based variations, keeping color for the
+data; items with a manual background keep it. *Classic* fills tiles and
+KPIs with the palette color. The tonal palettes *Indigo* and *Teal* are
+designed for Clean.
+
+Three item types present data as text instead of a canvas chart.
+*Headline* writes one value into a sentence: set *Headline Template*
+with ``{value}`` and, optionally, *Headline Variation Suffix* with
+``{delta}``, which is appended only when a previous-period variation
+exists. *Ranking* lists groups as rows with an inline bar, and
+*Segmented Bar* splits one bar by share of the total. Grouped items with
+nothing to plot show a short message instead of an empty chart.
+
 Usage
 =====
 

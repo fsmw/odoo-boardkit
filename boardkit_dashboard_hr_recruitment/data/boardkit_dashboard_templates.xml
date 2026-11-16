@@ -186,7 +186,7 @@
         },
         {
           "name": "Applications by Job",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "hr.applicant",
           "aggregation": "count",
           "group_by_field_id": "job_id",
@@ -203,7 +203,7 @@
         },
         {
           "name": "New Applications by Source",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "hr.applicant",
           "aggregation": "count",
           "group_by_field_id": "source_id",

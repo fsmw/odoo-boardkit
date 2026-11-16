@@ -162,7 +162,7 @@
         },
         {
           "name": "Top Partners by RMAs",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "rma",
           "aggregation": "count",
           "group_by_field_id": "partner_id",
@@ -180,7 +180,7 @@
         },
         {
           "name": "RMAs by Status",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "rma",
           "aggregation": "count",
           "group_by_field_id": "state",

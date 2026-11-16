@@ -160,7 +160,7 @@
         },
         {
           "name": "Active by Department",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "hr.employee",
           "aggregation": "count",
           "group_by_field_id": "department_id",
@@ -177,7 +177,7 @@
         },
         {
           "name": "Active by Type",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "hr.employee",
           "aggregation": "count",
           "group_by_field_id": "employee_type",

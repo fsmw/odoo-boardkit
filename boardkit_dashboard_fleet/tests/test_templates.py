@@ -44,7 +44,7 @@ class TestFleetDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
         self.assertEqual(active_rate.kpi_display, "percent")
 
         by_brand = dashboard.item_ids.filtered(lambda i: i.name == "Active by Brand")
-        self.assertEqual(by_brand.item_type, "bar_horizontal")
+        self.assertEqual(by_brand.item_type, "ranking")
         self.assertEqual(by_brand.group_by_field_id.name, "brand_id")
 
         recent = dashboard.item_ids.filtered(lambda i: i.name == "Recent Vehicles")

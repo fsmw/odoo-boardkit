@@ -34,7 +34,7 @@
           "domain": "[('type', '=', 'opportunity'), ('active', '=', True), ('probability', '&lt;', 100)]",
           "layout": {
             "x": 0,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -52,7 +52,7 @@
           "date_field_id": "date_closed",
           "layout": {
             "x": 3,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -70,7 +70,7 @@
           "domain": "[('type', '=', 'opportunity'), ('active', '=', True), ('probability', '&lt;', 100)]",
           "layout": {
             "x": 6,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -90,7 +90,7 @@
           "date_field_id": "date_closed",
           "layout": {
             "x": 9,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -112,7 +112,7 @@
           "date_field_2_id": "date_closed",
           "layout": {
             "x": 0,
-            "y": 2,
+            "y": 4,
             "w": 6,
             "h": 2
           },
@@ -128,7 +128,7 @@
           "domain": "[('type', '=', 'opportunity'), ('active', '=', True), ('probability', '&lt;', 100), ('date_deadline', '&lt;', context_today())]",
           "layout": {
             "x": 6,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -146,7 +146,7 @@
           "domain": "[('type', '=', 'opportunity'), ('active', '=', True), ('probability', '&lt;', 100)]",
           "layout": {
             "x": 9,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -165,7 +165,7 @@
           "domain": "[('type', '=', 'opportunity'), ('active', '=', True)]",
           "layout": {
             "x": 0,
-            "y": 4,
+            "y": 6,
             "w": 6,
             "h": 5
           },
@@ -189,7 +189,7 @@
           "domain": "[('type', '=', 'opportunity'), ('probability', '=', 100)]",
           "layout": {
             "x": 6,
-            "y": 4,
+            "y": 6,
             "w": 6,
             "h": 5
           },
@@ -207,7 +207,7 @@
           "domain": "[('type', '=', 'opportunity'), ('country_id', '!=', False)]",
           "layout": {
             "x": 0,
-            "y": 9,
+            "y": 11,
             "w": 6,
             "h": 4
           },
@@ -229,7 +229,7 @@
           "domain": "[('type', '=', 'opportunity'), ('active', '=', True), ('probability', '&lt;', 100)]",
           "layout": {
             "x": 6,
-            "y": 9,
+            "y": 11,
             "w": 6,
             "h": 4
           },
@@ -258,11 +258,32 @@
           "date_field_id": "create_date",
           "layout": {
             "x": 0,
-            "y": 13,
+            "y": 15,
             "w": 12,
             "h": 5
           },
           "index": 11
+        },
+        {
+          "name": "Titular: Ingresos ganados",
+          "item_type": "headline",
+          "number_style": "es_cl",
+          "model": "crm.lead",
+          "aggregation": "sum",
+          "measure_field_id": "expected_revenue",
+          "unit_type": "monetary",
+          "compare_previous_period": true,
+          "domain": "[('type', '=', 'opportunity'), ('probability', '=', 100)]",
+          "date_field_id": "date_closed",
+          "headline_template": "Ingresos ganados: {value}",
+          "headline_delta_suffix": ", {delta} vs. período anterior",
+          "layout": {
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 2
+          },
+          "index": 12
         }
       ],
       "filters": [

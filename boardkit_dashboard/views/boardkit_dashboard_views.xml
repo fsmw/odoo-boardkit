@@ -79,6 +79,7 @@
                                 invisible="date_filter != 'custom'"
                                 required="date_filter == 'custom'"
                             />
+                            <field name="visual_style" />
                             <field name="default_color_palette" />
                             <field
                                 name="default_palette_id"

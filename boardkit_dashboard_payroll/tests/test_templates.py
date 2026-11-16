@@ -43,7 +43,7 @@ class TestPayrollDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase)
         self.assertEqual(rate.domain_2, "[]")
 
         by_struct = dashboard.item_ids.filtered(lambda i: i.name == "Done by Structure")
-        self.assertEqual(by_struct.item_type, "bar_horizontal")
+        self.assertEqual(by_struct.item_type, "ranking")
         self.assertEqual(by_struct.group_by_field_id.name, "struct_id")
 
         recent = dashboard.item_ids.filtered(lambda i: i.name == "Recent Payslips")

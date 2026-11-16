@@ -165,7 +165,7 @@
         },
         {
           "name": "Companies vs Individuals",
-          "item_type": "pie",
+          "item_type": "segmented",
           "model": "res.partner",
           "aggregation": "count",
           "group_by_field_id": "is_company",

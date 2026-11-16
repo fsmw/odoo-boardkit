@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t t-name="boardkit_dashboard.DashboardAction">
-        <div class="o_boardkit_dashboard o_action h-100 d-flex flex-column">
+        <div
+            class="o_boardkit_dashboard o_action h-100 d-flex flex-column"
+            t-att-class="state.board and state.board.visual_style === 'clean' ? 'o_boardkit_style_clean' : ''"
+        >
             <!-- Loading -->
             <div
                 t-if="state.loading"

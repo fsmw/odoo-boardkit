@@ -46,7 +46,7 @@ class TestRepairDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
         self.assertEqual(rate.domain_2, "[]")
 
         by_product = dashboard.item_ids.filtered(lambda i: i.name == "Open by Product")
-        self.assertEqual(by_product.item_type, "bar_horizontal")
+        self.assertEqual(by_product.item_type, "ranking")
         self.assertEqual(by_product.group_by_field_id.name, "product_id")
 
         recent = dashboard.item_ids.filtered(lambda i: i.name == "Recent Orders")

@@ -163,7 +163,7 @@
         },
         {
           "name": "Done by Structure",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "hr.payslip",
           "aggregation": "count",
           "group_by_field_id": "struct_id",
@@ -199,7 +199,7 @@
         },
         {
           "name": "Payslips by Status",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "hr.payslip",
           "aggregation": "count",
           "group_by_field_id": "state",

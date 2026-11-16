@@ -12,3 +12,5 @@ from . import test_preview
 from . import test_security
 from . import test_templates
 from . import test_tour
+from . import test_visual_style
+from . import test_item_presentations

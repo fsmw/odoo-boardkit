@@ -25,7 +25,7 @@ class TestAccountDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase)
             dashboard.group_ids,
             self.env.ref("account.group_account_invoice"),
         )
-        self.assertEqual(len(dashboard.item_ids), 13)
+        self.assertEqual(len(dashboard.item_ids), 14)
         self.assertFalse(dashboard.item_ids.filtered(lambda i: i.item_type == "gauge"))
         self.assertEqual(len(dashboard.filter_ids), 4)
         self.assertTrue(
@@ -60,7 +60,7 @@ class TestAccountDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase)
         payment_chart = dashboard.item_ids.filtered(
             lambda i: i.name == "By Payment Status"
         )
-        self.assertEqual(payment_chart.item_type, "doughnut")
+        self.assertEqual(payment_chart.item_type, "segmented")
         self.assertEqual(payment_chart.group_by_field_id.name, "payment_state")
 
         recent = dashboard.item_ids.filtered(lambda i: i.name == "Recent Invoices")
@@ -80,7 +80,7 @@ class TestAccountDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase)
         dashboard = self.env["boardkit.dashboard"].browse(dashboard_ids)
         self.assertEqual(dashboard.name, "Tablero Facturacion ES")
         self.assertIn("Facturacion de clientes", dashboard.description)
-        self.assertEqual(len(dashboard.item_ids), 14)
+        self.assertEqual(len(dashboard.item_ids), 15)
         bank_item = dashboard.item_ids.filtered(
             lambda item: item.item_type == "bank_overview"
         )
@@ -93,5 +93,5 @@ class TestAccountDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase)
                     lambda item: item.model_name == "account.move"
                 )
             ),
-            13,
+            14,
         )

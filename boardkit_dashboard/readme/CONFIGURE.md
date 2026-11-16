@@ -39,3 +39,15 @@
    server-side per user for up to that interval. Optionally lower the cap with
    system parameter `boardkit_dashboard.data_cache_max_ttl` (seconds; `0`
    disables the cache).
+
+Each board has a _Visual Style_. _Clean_ (the default) renders neutral cards,
+themed charts and text-based variations, keeping color for the data; items
+with a manual background keep it. _Classic_ fills tiles and KPIs with the
+palette color. The tonal palettes _Indigo_ and _Teal_ are designed for Clean.
+
+Three item types present data as text instead of a canvas chart. _Headline_
+writes one value into a sentence: set _Headline Template_ with `{value}` and,
+optionally, _Headline Variation Suffix_ with `{delta}`, which is appended only
+when a previous-period variation exists. _Ranking_ lists groups as rows with an
+inline bar, and _Segmented Bar_ splits one bar by share of the total. Grouped
+items with nothing to plot show a short message instead of an empty chart.

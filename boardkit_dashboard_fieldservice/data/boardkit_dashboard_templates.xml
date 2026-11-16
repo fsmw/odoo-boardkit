@@ -195,7 +195,7 @@
         },
         {
           "name": "Open by Team",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "fsm.order",
           "aggregation": "count",
           "group_by_field_id": "team_id",
@@ -212,7 +212,7 @@
         },
         {
           "name": "Open by Type",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "fsm.order",
           "aggregation": "count",
           "group_by_field_id": "type",

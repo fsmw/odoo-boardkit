@@ -43,13 +43,13 @@ class TestHrTimesheetDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionC
         self.assertFalse(today.date_field_id)
 
         by_project = dashboard.item_ids.filtered(lambda i: i.name == "Hours by Project")
-        self.assertEqual(by_project.item_type, "bar_horizontal")
+        self.assertEqual(by_project.item_type, "ranking")
         self.assertEqual(by_project.group_by_field_id.name, "project_id")
 
         share = dashboard.item_ids.filtered(
             lambda i: i.name == "Hours by Project Share"
         )
-        self.assertEqual(share.item_type, "doughnut")
+        self.assertEqual(share.item_type, "segmented")
         self.assertEqual(share.group_by_field_id.name, "project_id")
         self.assertEqual(share.measure_field_id.name, "unit_amount")
 

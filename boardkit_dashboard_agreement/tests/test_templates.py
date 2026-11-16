@@ -45,7 +45,7 @@ class TestAgreementDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCas
         domain_chart = dashboard.item_ids.filtered(
             lambda i: i.name == "Active by Domain"
         )
-        self.assertEqual(domain_chart.item_type, "doughnut")
+        self.assertEqual(domain_chart.item_type, "segmented")
         self.assertEqual(domain_chart.group_by_field_id.name, "domain")
 
         recent = dashboard.item_ids.filtered(lambda i: i.name == "Recent Agreements")

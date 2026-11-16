@@ -1,0 +1,141 @@
+// Copyright 2026 SMWLAB
+// License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
+// Headline, ranking, segmented bar and empty state. These work in both
+// visual styles, so tones derive from the card's own text color.
+
+$bk-presentation-muted: color-mix(in srgb, currentColor 62%, transparent);
+$bk-presentation-hairline: color-mix(in srgb, currentColor 11%, transparent);
+$bk-presentation-track: color-mix(in srgb, currentColor 8%, transparent);
+
+.o_boardkit_dashboard_card {
+    .o_boardkit_dashboard_empty {
+        color: $bk-presentation-muted;
+        font-size: 0.8125rem;
+    }
+
+    .o_boardkit_headline {
+        min-width: 0;
+
+        .o_boardkit_headline_sentence {
+            font-size: clamp(1.25rem, 2.1vw, 2rem);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.015em;
+            text-wrap: balance;
+        }
+
+        .o_boardkit_headline_value {
+            color: var(--bk-accent, inherit);
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
+        .o_boardkit_headline_subline {
+            margin-top: 0.35rem;
+            color: $bk-presentation-muted;
+            font-size: 0.9375rem;
+        }
+    }
+
+    .o_boardkit_ranking_row,
+    .o_boardkit_segmented_row {
+        display: grid;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+        border-top: 1px solid $bk-presentation-hairline;
+
+        &:first-child {
+            border-top: 0;
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--bk-accent, currentColor);
+            outline-offset: -2px;
+        }
+    }
+
+    .o_boardkit_ranking_row {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) auto;
+    }
+
+    .o_boardkit_ranking_track {
+        height: 6px;
+        overflow: hidden;
+        border-radius: 3px;
+        background-color: $bk-presentation-track;
+    }
+
+    .o_boardkit_ranking_bar {
+        display: block;
+        height: 100%;
+        border-radius: 3px;
+    }
+
+    .o_boardkit_ranking_value,
+    .o_boardkit_segmented_value,
+    .o_boardkit_segmented_percent {
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+    }
+
+    .o_boardkit_segmented_total {
+        display: flex;
+        align-items: baseline;
+        gap: 0.4rem;
+    }
+
+    .o_boardkit_segmented_total_value {
+        font-size: 1.5rem;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .o_boardkit_segmented_total_label,
+    .o_boardkit_segmented_percent {
+        color: $bk-presentation-muted;
+        font-size: 0.8125rem;
+    }
+
+    .o_boardkit_segmented_bar {
+        display: flex;
+        flex: 0 0 10px;
+        gap: 3px;
+        margin: 0.6rem 0 0.4rem;
+    }
+
+    .o_boardkit_segmented_segment {
+        flex-basis: 0;
+        min-width: 4px;
+        border-radius: 3px;
+    }
+
+    .o_boardkit_segmented_legend {
+        min-height: 0;
+    }
+
+    .o_boardkit_segmented_row {
+        grid-template-columns: auto minmax(0, 1fr) auto 3.25rem;
+    }
+
+    .o_boardkit_segmented_percent {
+        text-align: right;
+    }
+
+    .o_boardkit_segmented_swatch {
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+    }
+}
+
+// A headline is page-level text, so in the Clean style its card dissolves.
+.o_boardkit_dashboard_card.o_boardkit_card_clean[data-item-type="headline"] {
+    border-color: transparent;
+    background-color: transparent;
+
+    &:hover {
+        border-color: transparent;
+    }
+}

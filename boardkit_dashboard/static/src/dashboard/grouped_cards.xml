@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="boardkit_dashboard.RankingCard">
+        <div class="o_boardkit_ranking h-100 overflow-auto" role="list">
+            <div
+                t-foreach="rows"
+                t-as="row"
+                t-key="row.index"
+                class="o_boardkit_ranking_row"
+                t-att-class="clickable ? 'cursor-pointer' : ''"
+                role="listitem"
+                t-att-tabindex="clickable ? 0 : undefined"
+                t-on-click="() => this.onEntryClicked(row)"
+                t-on-keydown="(ev) => this.onEntryKeydown(ev, row)"
+            >
+                <span
+                    class="o_boardkit_ranking_label text-truncate"
+                    t-att-title="row.label"
+                    t-esc="row.label"
+                />
+                <span class="o_boardkit_ranking_track" aria-hidden="true">
+                    <span class="o_boardkit_ranking_bar" t-att-style="row.barStyle" />
+                </span>
+                <span class="o_boardkit_ranking_value" t-esc="row.formatted" />
+            </div>
+        </div>
+    </t>
+
+    <t t-name="boardkit_dashboard.SegmentedCard">
+        <div class="o_boardkit_segmented h-100 d-flex flex-column">
+            <div class="o_boardkit_segmented_total">
+                <span class="o_boardkit_segmented_total_value" t-esc="formattedTotal" />
+                <span class="o_boardkit_segmented_total_label">total</span>
+            </div>
+            <div class="o_boardkit_segmented_bar" aria-hidden="true">
+                <t t-foreach="segments" t-as="segment" t-key="segment.index">
+                    <span
+                        t-if="segment.visible"
+                        class="o_boardkit_segmented_segment"
+                        t-att-style="segment.segmentStyle"
+                        t-att-title="segment.label + ': ' + segment.percent"
+                    />
+                </t>
+            </div>
+            <div class="o_boardkit_segmented_legend overflow-auto" role="list">
+                <div
+                    t-foreach="segments"
+                    t-as="segment"
+                    t-key="segment.index"
+                    class="o_boardkit_segmented_row"
+                    t-att-class="clickable ? 'cursor-pointer' : ''"
+                    role="listitem"
+                    t-att-tabindex="clickable ? 0 : undefined"
+                    t-on-click="() => this.onEntryClicked(segment)"
+                    t-on-keydown="(ev) => this.onEntryKeydown(ev, segment)"
+                >
+                    <span
+                        class="o_boardkit_segmented_swatch"
+                        t-att-style="segment.swatchStyle"
+                        aria-hidden="true"
+                    />
+                    <span
+                        class="o_boardkit_segmented_label text-truncate"
+                        t-att-title="segment.label"
+                        t-esc="segment.label"
+                    />
+                    <span
+                        class="o_boardkit_segmented_value"
+                        t-esc="segment.formatted"
+                    />
+                    <span
+                        class="o_boardkit_segmented_percent"
+                        t-esc="segment.percent"
+                    />
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

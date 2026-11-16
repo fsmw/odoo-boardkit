@@ -16,6 +16,7 @@ from odoo.tools.safe_eval import safe_eval
 from ..tools import data_cache
 from ..tools.date_ranges import DATE_RANGE_PRESETS
 from ..tools.palettes import PRESET_PALETTE_SELECTION
+from ..tools.visual_styles import DEFAULT_VISUAL_STYLE
 
 # Default upper bound for the process-local item data cache TTL (seconds).
 # Overridable with ir.config_parameter boardkit_dashboard.data_cache_max_ttl.
@@ -110,7 +111,13 @@ CHART_TYPES = (
     "doughnut",
     "polar",
     "radar",
+    # HTML presentations of grouped data: ranked rows and a segmented bar.
+    "ranking",
+    "segmented",
 )
+
+# Items showing one aggregated value, optionally against the previous period.
+SINGLE_VALUE_TYPES = ("tile", "headline")
 
 # Cartesian charts that can overlay a previous-period series.
 PREVIOUS_PERIOD_CHART_TYPES = (
@@ -163,6 +170,7 @@ PREVIEW_DEPENDS = (
     "dashboard_id",
     "dashboard_id.default_color_palette",
     "dashboard_id.default_palette_id",
+    "dashboard_id.visual_style",
     "date_field_2_id",
     "date_field_id",
     "date_filter",
@@ -175,6 +183,8 @@ PREVIEW_DEPENDS = (
     "gauge_max",
     "group_by_field_id",
     "group_by_granularity",
+    "headline_delta_suffix",
+    "headline_template",
     "icon",
     "item_type",
     "kpi_display",
@@ -253,6 +263,9 @@ class BoardkitDashboardItem(models.Model):
             ("bullet", "Bullet Chart"),
             ("map", "Map"),
             ("list", "List"),
+            ("headline", "Headline"),
+            ("ranking", "Ranking"),
+            ("segmented", "Segmented Bar"),
         ],
         required=True,
         default="tile",
@@ -515,6 +528,19 @@ class BoardkitDashboardItem(models.Model):
     )
 
     # Appearance
+    headline_template = fields.Char(
+        translate=True,
+        help="Sentence shown by Headline items. {value} is replaced by the "
+        "formatted number, e.g. 'Net sales of {value} this month'. Leave empty "
+        "to show the item name followed by the value.",
+    )
+    headline_delta_suffix = fields.Char(
+        string="Headline Variation Suffix",
+        translate=True,
+        help="Text appended to the headline when a previous-period variation "
+        "is available. {delta} is replaced by the signed percentage, e.g. "
+        "', {delta} vs previous period'.",
+    )
     icon = fields.Char(
         default="fa-bar-chart", help="Font Awesome icon class, e.g. fa-line-chart."
     )
@@ -879,6 +905,12 @@ class BoardkitDashboardItem(models.Model):
             "model": self.model_name,
             "model_label": self.model_id.name,
             "icon": self.icon or "fa-bar-chart",
+            "headline": {
+                "template": self.headline_template or "",
+                "delta_suffix": self.headline_delta_suffix or "",
+            },
+            # Unsaved items previewed before a dashboard is set still theme.
+            "visual_style": self.dashboard_id.visual_style or DEFAULT_VISUAL_STYLE,
             "background_style": self.background_style,
             "background_color": self.background_color or "#FFFFFF",
             "font_color": self.font_color or "#111827",
@@ -1032,7 +1064,7 @@ class BoardkitDashboardItem(models.Model):
         )
 
     def _get_data(self, params):
-        if self.item_type == "tile":
+        if self.item_type in SINGLE_VALUE_TYPES:
             return self._get_tile_data(params)
         if self.item_type == "kpi":
             return self._get_kpi_data(params)
@@ -2332,7 +2364,7 @@ class BoardkitDashboardItem(models.Model):
         return {"name": self.name, "headers": headers, "rows": rows}
 
     def _get_export_rows(self, params):
-        if self.item_type == "tile":
+        if self.item_type in SINGLE_VALUE_TYPES:
             data = self._get_data(params)
             return (
                 [_("Name"), _("Value"), _("Records")],
@@ -2462,6 +2494,8 @@ class BoardkitDashboardItem(models.Model):
         "page_size",
         "sort_dir",
         "icon",
+        "headline_template",
+        "headline_delta_suffix",
         "background_style",
         "background_color",
         "font_color",

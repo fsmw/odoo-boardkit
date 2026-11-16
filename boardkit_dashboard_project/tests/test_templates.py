@@ -47,7 +47,7 @@ class TestProjectDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase)
         by_project = dashboard.item_ids.filtered(
             lambda i: i.name == "Open Tasks by Project"
         )
-        self.assertEqual(by_project.item_type, "bar_horizontal")
+        self.assertEqual(by_project.item_type, "ranking")
         self.assertEqual(by_project.group_by_field_id.name, "project_id")
 
         funnel = dashboard.item_ids.filtered(lambda i: i.name == "Stage Funnel")

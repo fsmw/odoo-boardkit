@@ -3311,3 +3311,70 @@ msgstr "a"
 #: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
 msgid "vs"
 msgstr ""
+
+#. module: boardkit_dashboard
+#: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard__visual_style
+msgid "Visual Style"
+msgstr "Estilo visual"
+
+#. module: boardkit_dashboard
+#: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__visual_style__clean
+msgid "Clean"
+msgstr "Limpio"
+
+#. module: boardkit_dashboard
+#: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard__visual_style__classic
+msgid "Classic"
+msgstr "Clásico"
+
+#. module: boardkit_dashboard
+#: model:ir.model.fields,help:boardkit_dashboard.field_boardkit_dashboard__visual_style
+msgid ""
+"Clean shows neutral cards where color is reserved for the data. Classic "
+"fills tiles and KPIs with the palette color."
+msgstr ""
+"Limpio muestra tarjetas neutras y reserva el color para los datos. Clásico "
+"rellena los indicadores con el color de la paleta."
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.js:0
+msgid "vs previous period"
+msgstr "vs. período anterior"
+
+#. module: boardkit_dashboard
+#: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__item_type__headline
+msgid "Headline"
+msgstr "Titular"
+
+#. module: boardkit_dashboard
+#: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__item_type__ranking
+msgid "Ranking"
+msgstr "Ranking"
+
+#. module: boardkit_dashboard
+#: model:ir.model.fields.selection,name:boardkit_dashboard.selection__boardkit_dashboard_item__item_type__segmented
+msgid "Segmented Bar"
+msgstr "Barra segmentada"
+
+#. module: boardkit_dashboard
+#: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__headline_template
+msgid "Headline Template"
+msgstr "Plantilla del titular"
+
+#. module: boardkit_dashboard
+#: model:ir.model.fields,field_description:boardkit_dashboard.field_boardkit_dashboard_item__headline_delta_suffix
+msgid "Headline Variation Suffix"
+msgstr "Sufijo de variación del titular"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
+msgid "No data for the selected filters"
+msgstr "Sin datos para los filtros seleccionados"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/grouped_cards.xml:0
+msgid "total"
+msgstr "total"

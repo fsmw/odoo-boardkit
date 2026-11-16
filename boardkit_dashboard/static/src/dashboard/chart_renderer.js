@@ -3,7 +3,14 @@
 
 import {Component, onWillStart, useEffect, useRef, useState} from "@odoo/owl";
 import {alpha2ToNumeric, numericToAlpha2} from "./country_codes";
-import {formatItemValue, formatNumber, getPaletteColor, hexToRGBA} from "./utils";
+import {applyCleanChartTheme, readChartTokens} from "./chart_theme";
+import {
+    formatItemValue,
+    formatNumber,
+    getPaletteColor,
+    hexToRGBA,
+    isCleanStyle,
+} from "./utils";
 import {_t} from "@web/core/l10n/translation";
 import {browser} from "@web/core/browser/browser";
 import {loadBundle} from "@web/core/assets";
@@ -374,12 +381,24 @@ export class ChartRenderer extends Component {
             this.world = getWorldTopology();
         }
         this.destroyChart();
-        const chartConfig = this.buildChartConfig();
+        const chartConfig = this.buildThemedChartConfig();
         if (!chartConfig) {
             return;
         }
         // eslint-disable-next-line no-undef
         this.chart = new Chart(this.canvasRef.el, chartConfig);
+    }
+
+    buildThemedChartConfig() {
+        const chartConfig = this.buildChartConfig();
+        if (!chartConfig || !isCleanStyle(this.props.config)) {
+            return chartConfig;
+        }
+        return applyCleanChartTheme(
+            chartConfig,
+            this.props.config.type,
+            readChartTokens(this.canvasRef.el)
+        );
     }
 
     buildChartConfig() {

@@ -42,7 +42,7 @@ class TestRmaDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
         self.assertEqual(rate.domain_2, "[]")
 
         status_chart = dashboard.item_ids.filtered(lambda i: i.name == "RMAs by Status")
-        self.assertEqual(status_chart.item_type, "doughnut")
+        self.assertEqual(status_chart.item_type, "segmented")
         self.assertEqual(status_chart.group_by_field_id.name, "state")
 
         recent = dashboard.item_ids.filtered(lambda i: i.name == "Recent RMAs")

@@ -24,7 +24,7 @@ class TestExpenseDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase)
             dashboard.group_ids,
             self.env.ref("hr_expense.group_hr_expense_user"),
         )
-        self.assertEqual(len(dashboard.item_ids), 12)
+        self.assertEqual(len(dashboard.item_ids), 13)
         self.assertEqual(len(dashboard.filter_ids), 4)
         self.assertTrue(
             all(item.model_name == "hr.expense" for item in dashboard.item_ids)
@@ -50,7 +50,7 @@ class TestExpenseDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase)
         self.assertIn("reported", to_reimburse.domain)
 
         by_cat = dashboard.item_ids.filtered(lambda i: i.name == "Amount by Category")
-        self.assertEqual(by_cat.item_type, "bar_horizontal")
+        self.assertEqual(by_cat.item_type, "ranking")
         self.assertEqual(by_cat.group_by_field_id.name, "product_id")
 
         funnel = dashboard.item_ids.filtered(lambda i: i.name == "Expense Funnel")

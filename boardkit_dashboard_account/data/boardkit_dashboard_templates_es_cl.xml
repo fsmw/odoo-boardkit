@@ -41,7 +41,7 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 0,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -59,7 +59,7 @@
           "domain": "[('move_type', '=', 'out_invoice'), ('state', '=', 'posted'), ('payment_state', 'in', ('not_paid', 'partial'))]",
           "layout": {
             "x": 3,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -77,7 +77,7 @@
           "domain": "[('move_type', '=', 'out_invoice'), ('state', '=', 'posted'), ('payment_state', 'in', ('not_paid', 'partial')), ('invoice_date_due', '&lt;', context_today())]",
           "layout": {
             "x": 6,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -96,7 +96,7 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 9,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -118,7 +118,7 @@
           "date_field_2_id": "invoice_date",
           "layout": {
             "x": 0,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -138,7 +138,7 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 3,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -155,7 +155,7 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 6,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -172,7 +172,7 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 9,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -188,7 +188,7 @@
           "domain": "[]",
           "layout": {
             "x": 0,
-            "y": 4,
+            "y": 6,
             "w": 12,
             "h": 4
           },
@@ -212,7 +212,7 @@
           "domain": "[('move_type', '=', 'out_invoice'), ('state', '=', 'posted')]",
           "layout": {
             "x": 0,
-            "y": 8,
+            "y": 10,
             "w": 6,
             "h": 4
           },
@@ -220,7 +220,7 @@
         },
         {
           "name": "Top clientes por monto",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "sum",
@@ -235,7 +235,7 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 6,
-            "y": 8,
+            "y": 10,
             "w": 6,
             "h": 4
           },
@@ -243,7 +243,7 @@
         },
         {
           "name": "Por estado de pago",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "number_style": "es_cl",
           "model": "account.move",
           "aggregation": "count",
@@ -253,7 +253,7 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 0,
-            "y": 12,
+            "y": 14,
             "w": 6,
             "h": 4
           },
@@ -276,7 +276,7 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 6,
-            "y": 12,
+            "y": 14,
             "w": 6,
             "h": 4
           },
@@ -304,11 +304,32 @@
           "date_field_id": "invoice_date",
           "layout": {
             "x": 0,
-            "y": 16,
+            "y": 18,
             "w": 12,
             "h": 5
           },
           "index": 13
+        },
+        {
+          "name": "Titular: Total facturado",
+          "item_type": "headline",
+          "number_style": "es_cl",
+          "model": "account.move",
+          "aggregation": "sum",
+          "measure_field_id": "amount_total_signed",
+          "unit_type": "monetary",
+          "compare_previous_period": true,
+          "domain": "[('move_type', '=', 'out_invoice'), ('state', '=', 'posted')]",
+          "date_field_id": "invoice_date",
+          "headline_template": "Total facturado: {value}",
+          "headline_delta_suffix": ", {delta} vs. período anterior",
+          "layout": {
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 2
+          },
+          "index": 14
         }
       ],
       "filters": [

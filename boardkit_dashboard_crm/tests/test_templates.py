@@ -25,7 +25,15 @@ class TestCrmDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
                 return {
                     key: without_labels(item)
                     for key, item in value.items()
-                    if key not in {"name", "description", "tags", "number_style"}
+                    if key
+                    not in {
+                        "name",
+                        "description",
+                        "tags",
+                        "number_style",
+                        "headline_template",
+                        "headline_delta_suffix",
+                    }
                 }
             if isinstance(value, list):
                 return [without_labels(item) for item in value]
@@ -60,7 +68,7 @@ class TestCrmDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
             dashboard.group_ids,
             self.env.ref("sales_team.group_sale_salesman_all_leads"),
         )
-        self.assertEqual(len(dashboard.item_ids), 12)
+        self.assertEqual(len(dashboard.item_ids), 13)
         maps = dashboard.item_ids.filtered(lambda i: i.item_type == "map")
         self.assertEqual(len(maps), 1)
         self.assertEqual(maps.name, "Opportunities by Country")
