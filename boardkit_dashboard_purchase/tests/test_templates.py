@@ -27,7 +27,15 @@ class TestPurchaseDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase
                 return {
                     key: without_labels(item)
                     for key, item in value.items()
-                    if key not in {"name", "description", "tags", "number_style"}
+                    if key
+                    not in {
+                        "name",
+                        "description",
+                        "tags",
+                        "number_style",
+                        "headline_template",
+                        "headline_delta_suffix",
+                    }
                 }
             if isinstance(value, list):
                 return [without_labels(item) for item in value]
@@ -64,7 +72,7 @@ class TestPurchaseDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase
             dashboard.group_ids,
             self.env.ref("purchase.group_purchase_user"),
         )
-        self.assertEqual(len(dashboard.item_ids), 13)
+        self.assertEqual(len(dashboard.item_ids), 14)
         self.assertFalse(dashboard.item_ids.filtered(lambda i: i.item_type == "gauge"))
         self.assertEqual(len(dashboard.filter_ids), 4)
         self.assertTrue(
@@ -99,7 +107,7 @@ class TestPurchaseDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase
         status_chart = dashboard.item_ids.filtered(
             lambda i: i.name == "Orders by Status"
         )
-        self.assertEqual(status_chart.item_type, "doughnut")
+        self.assertEqual(status_chart.item_type, "segmented")
         self.assertEqual(status_chart.group_by_field_id.name, "state")
         self.assertFalse(status_chart.date_field_id)
 

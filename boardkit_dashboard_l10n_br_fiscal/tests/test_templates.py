@@ -24,7 +24,7 @@ class TestFiscalDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
             dashboard.group_ids,
             self.env.ref("l10n_br_fiscal.group_user"),
         )
-        self.assertEqual(len(dashboard.item_ids), 13)
+        self.assertEqual(len(dashboard.item_ids), 14)
         self.assertFalse(dashboard.item_ids.filtered(lambda i: i.item_type == "gauge"))
         self.assertEqual(len(dashboard.filter_ids), 4)
         self.assertTrue(
@@ -64,7 +64,7 @@ class TestFiscalDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
         status_chart = dashboard.item_ids.filtered(
             lambda i: i.name == "Documents by e-Doc State"
         )
-        self.assertEqual(status_chart.item_type, "doughnut")
+        self.assertEqual(status_chart.item_type, "segmented")
         self.assertEqual(status_chart.group_by_field_id.name, "state_edoc")
         self.assertFalse(status_chart.date_field_id)
 

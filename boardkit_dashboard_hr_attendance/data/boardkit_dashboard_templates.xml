@@ -177,7 +177,7 @@
         },
         {
           "name": "Hours by Department",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "hr.attendance",
           "aggregation": "sum",
           "measure_field_id": "worked_hours",
@@ -221,7 +221,7 @@
         },
         {
           "name": "Check-ins by Mode",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "hr.attendance",
           "aggregation": "count",
           "group_by_field_id": "in_mode",

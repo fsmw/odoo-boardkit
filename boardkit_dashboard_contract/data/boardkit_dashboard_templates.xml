@@ -156,7 +156,7 @@
         },
         {
           "name": "Active by Partner",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "contract.contract",
           "aggregation": "count",
           "group_by_field_id": "partner_id",
@@ -173,7 +173,7 @@
         },
         {
           "name": "Active by Type",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "contract.contract",
           "aggregation": "count",
           "group_by_field_id": "contract_type",

@@ -159,7 +159,7 @@
         },
         {
           "name": "Open by Product",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "repair.order",
           "aggregation": "count",
           "group_by_field_id": "product_id",
@@ -176,7 +176,7 @@
         },
         {
           "name": "Orders by Status",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "repair.order",
           "aggregation": "count",
           "group_by_field_id": "state",

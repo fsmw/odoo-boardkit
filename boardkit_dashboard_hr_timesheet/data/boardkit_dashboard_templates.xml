@@ -192,7 +192,7 @@
         },
         {
           "name": "Hours by Project",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "account.analytic.line",
           "aggregation": "sum",
           "measure_field_id": "unit_amount",
@@ -214,7 +214,7 @@
         },
         {
           "name": "Hours by Project Share",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "account.analytic.line",
           "aggregation": "sum",
           "measure_field_id": "unit_amount",

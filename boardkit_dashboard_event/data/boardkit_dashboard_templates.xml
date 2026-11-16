@@ -163,7 +163,7 @@
         },
         {
           "name": "Top Events by Registrations",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "event.registration",
           "aggregation": "count",
           "group_by_field_id": "event_id",
@@ -181,7 +181,7 @@
         },
         {
           "name": "Events by Stage",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "event.event",
           "aggregation": "count",
           "group_by_field_id": "stage_id",

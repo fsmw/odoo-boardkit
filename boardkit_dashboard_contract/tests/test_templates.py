@@ -43,7 +43,7 @@ class TestContractDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase
         self.assertEqual(rate.kpi_display, "percent")
 
         type_chart = dashboard.item_ids.filtered(lambda i: i.name == "Active by Type")
-        self.assertEqual(type_chart.item_type, "doughnut")
+        self.assertEqual(type_chart.item_type, "segmented")
         self.assertEqual(type_chart.group_by_field_id.name, "contract_type")
 
         recent = dashboard.item_ids.filtered(lambda i: i.name == "Recent Contracts")

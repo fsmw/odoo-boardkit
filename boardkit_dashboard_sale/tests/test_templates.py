@@ -25,7 +25,15 @@ class TestSaleDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
                 return {
                     key: without_labels(item)
                     for key, item in value.items()
-                    if key not in {"name", "description", "tags", "number_style"}
+                    if key
+                    not in {
+                        "name",
+                        "description",
+                        "tags",
+                        "number_style",
+                        "headline_template",
+                        "headline_delta_suffix",
+                    }
                 }
             if isinstance(value, list):
                 return [without_labels(item) for item in value]
@@ -60,7 +68,7 @@ class TestSaleDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
             dashboard.group_ids,
             self.env.ref("sales_team.group_sale_salesman_all_leads"),
         )
-        self.assertEqual(len(dashboard.item_ids), 13)
+        self.assertEqual(len(dashboard.item_ids), 14)
         self.assertFalse(dashboard.item_ids.filtered(lambda i: i.item_type == "gauge"))
         self.assertEqual(len(dashboard.filter_ids), 4)
         self.assertTrue(
@@ -95,7 +103,7 @@ class TestSaleDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
         status_chart = dashboard.item_ids.filtered(
             lambda i: i.name == "Orders by Status"
         )
-        self.assertEqual(status_chart.item_type, "doughnut")
+        self.assertEqual(status_chart.item_type, "segmented")
         self.assertEqual(status_chart.group_by_field_id.name, "state")
         # A status snapshot must not be cut by the dashboard date filter.
         self.assertFalse(status_chart.date_field_id)

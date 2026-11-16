@@ -38,7 +38,7 @@
           "domain": "[('state', 'in', ['draft', 'sent'])]",
           "layout": {
             "x": 0,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -55,7 +55,7 @@
           "date_field_id": "date_order",
           "layout": {
             "x": 3,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -74,7 +74,7 @@
           "date_field_id": "date_order",
           "layout": {
             "x": 6,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -91,7 +91,7 @@
           "domain": "[('state', 'in', ['draft', 'sent'])]",
           "layout": {
             "x": 9,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -112,7 +112,7 @@
           "date_field_2_id": "date_order",
           "layout": {
             "x": 0,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -131,7 +131,7 @@
           "date_field_id": "date_order",
           "layout": {
             "x": 3,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -146,7 +146,7 @@
           "domain": "[('state', '=', 'sale'), ('commitment_date', '!=', False), ('commitment_date', '&lt;', context_today())]",
           "layout": {
             "x": 6,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -161,7 +161,7 @@
           "domain": "[('state', '=', 'sale'), ('invoice_status', '=', 'to invoice')]",
           "layout": {
             "x": 9,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -184,7 +184,7 @@
           "domain": "[('state', '=', 'sale')]",
           "layout": {
             "x": 0,
-            "y": 4,
+            "y": 6,
             "w": 6,
             "h": 4
           },
@@ -192,7 +192,7 @@
         },
         {
           "name": "Top Customers by Amount",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "sale.order",
           "aggregation": "sum",
           "measure_field_id": "amount_untaxed",
@@ -206,7 +206,7 @@
           "date_field_id": "date_order",
           "layout": {
             "x": 6,
-            "y": 4,
+            "y": 6,
             "w": 6,
             "h": 4
           },
@@ -214,7 +214,7 @@
         },
         {
           "name": "Orders by Status",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "sale.order",
           "aggregation": "count",
           "group_by_field_id": "state",
@@ -222,7 +222,7 @@
           "domain": "[]",
           "layout": {
             "x": 0,
-            "y": 8,
+            "y": 10,
             "w": 6,
             "h": 4
           },
@@ -244,7 +244,7 @@
           "date_field_id": "date_order",
           "layout": {
             "x": 6,
-            "y": 8,
+            "y": 10,
             "w": 6,
             "h": 4
           },
@@ -272,11 +272,31 @@
           "date_field_id": "date_order",
           "layout": {
             "x": 0,
-            "y": 12,
+            "y": 14,
             "w": 12,
             "h": 5
           },
           "index": 12
+        },
+        {
+          "name": "Headline: Untaxed Total",
+          "item_type": "headline",
+          "model": "sale.order",
+          "aggregation": "sum",
+          "measure_field_id": "amount_untaxed",
+          "unit_type": "monetary",
+          "compare_previous_period": true,
+          "domain": "[('state', '=', 'sale')]",
+          "date_field_id": "date_order",
+          "headline_template": "Untaxed Total: {value}",
+          "headline_delta_suffix": ", {delta} vs previous period",
+          "layout": {
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 2
+          },
+          "index": 13
         }
       ],
       "filters": [

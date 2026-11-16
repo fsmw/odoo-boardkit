@@ -37,7 +37,7 @@
           "domain": "[('state', '=', 'draft')]",
           "layout": {
             "x": 0,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -52,7 +52,7 @@
           "domain": "[('state', '=', 'to_approve')]",
           "layout": {
             "x": 3,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -71,7 +71,7 @@
           "date_field_id": "date_start",
           "layout": {
             "x": 6,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -86,7 +86,7 @@
           "domain": "[('state', '=', 'in_progress')]",
           "layout": {
             "x": 9,
-            "y": 0,
+            "y": 2,
             "w": 3,
             "h": 2
           },
@@ -107,7 +107,7 @@
           "date_field_2_id": "date_start",
           "layout": {
             "x": 0,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -124,7 +124,7 @@
           "date_field_id": "date_start",
           "layout": {
             "x": 3,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -141,7 +141,7 @@
           "date_field_id": "date_start",
           "layout": {
             "x": 6,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -156,7 +156,7 @@
           "domain": "[('state', '=', 'rejected')]",
           "layout": {
             "x": 9,
-            "y": 2,
+            "y": 4,
             "w": 3,
             "h": 2
           },
@@ -179,7 +179,7 @@
           "domain": "[('state', 'not in', ['rejected'])]",
           "layout": {
             "x": 0,
-            "y": 4,
+            "y": 6,
             "w": 6,
             "h": 4
           },
@@ -187,7 +187,7 @@
         },
         {
           "name": "Cost by Requester",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "purchase.request",
           "aggregation": "sum",
           "measure_field_id": "estimated_cost",
@@ -201,7 +201,7 @@
           "date_field_id": "date_start",
           "layout": {
             "x": 6,
-            "y": 4,
+            "y": 6,
             "w": 6,
             "h": 4
           },
@@ -209,7 +209,7 @@
         },
         {
           "name": "Requests by Status",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "purchase.request",
           "aggregation": "count",
           "group_by_field_id": "state",
@@ -217,7 +217,7 @@
           "domain": "[]",
           "layout": {
             "x": 0,
-            "y": 8,
+            "y": 10,
             "w": 6,
             "h": 4
           },
@@ -235,7 +235,7 @@
           "date_field_id": "date_start",
           "layout": {
             "x": 6,
-            "y": 8,
+            "y": 10,
             "w": 6,
             "h": 4
           },
@@ -264,11 +264,31 @@
           "date_field_id": "date_start",
           "layout": {
             "x": 0,
-            "y": 12,
+            "y": 14,
             "w": 12,
             "h": 5
           },
           "index": 12
+        },
+        {
+          "name": "Headline: Approved Cost",
+          "item_type": "headline",
+          "model": "purchase.request",
+          "aggregation": "sum",
+          "measure_field_id": "estimated_cost",
+          "unit_type": "monetary",
+          "compare_previous_period": true,
+          "domain": "[('state', 'in', ['approved', 'in_progress', 'done'])]",
+          "date_field_id": "date_start",
+          "headline_template": "Approved Cost: {value}",
+          "headline_delta_suffix": ", {delta} vs previous period",
+          "layout": {
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 2
+          },
+          "index": 13
         }
       ],
       "filters": [

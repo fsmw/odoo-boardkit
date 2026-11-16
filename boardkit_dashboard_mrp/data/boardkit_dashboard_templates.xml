@@ -159,7 +159,7 @@
         },
         {
           "name": "Qty by Product",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "mrp.production",
           "aggregation": "sum",
           "measure_field_id": "product_qty",
@@ -181,7 +181,7 @@
         },
         {
           "name": "MOs by Status",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "mrp.production",
           "aggregation": "count",
           "group_by_field_id": "state",

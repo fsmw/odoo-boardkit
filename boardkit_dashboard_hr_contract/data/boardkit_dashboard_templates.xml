@@ -184,7 +184,7 @@
         },
         {
           "name": "Running by Department",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "hr.contract",
           "aggregation": "count",
           "group_by_field_id": "department_id",
@@ -201,7 +201,7 @@
         },
         {
           "name": "Running by Type",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "hr.contract",
           "aggregation": "count",
           "group_by_field_id": "contract_type_id",

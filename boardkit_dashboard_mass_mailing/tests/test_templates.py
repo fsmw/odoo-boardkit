@@ -56,7 +56,7 @@ class TestMassMailingDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionC
         status_chart = dashboard.item_ids.filtered(
             lambda i: i.name == "Traces by Status"
         )
-        self.assertEqual(status_chart.item_type, "doughnut")
+        self.assertEqual(status_chart.item_type, "segmented")
         self.assertEqual(status_chart.group_by_field_id.name, "trace_status")
 
         recent = dashboard.item_ids.filtered(lambda i: i.name == "Recent Mailings")

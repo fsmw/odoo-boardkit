@@ -28,7 +28,7 @@ class TestPurchaseRequestDashboardTemplates(
             dashboard.group_ids,
             self.env.ref("purchase_request.group_purchase_request_user"),
         )
-        self.assertEqual(len(dashboard.item_ids), 13)
+        self.assertEqual(len(dashboard.item_ids), 14)
         self.assertFalse(dashboard.item_ids.filtered(lambda i: i.item_type == "gauge"))
         self.assertEqual(len(dashboard.filter_ids), 4)
         self.assertTrue(
@@ -60,7 +60,7 @@ class TestPurchaseRequestDashboardTemplates(
         status_chart = dashboard.item_ids.filtered(
             lambda i: i.name == "Requests by Status"
         )
-        self.assertEqual(status_chart.item_type, "doughnut")
+        self.assertEqual(status_chart.item_type, "segmented")
         self.assertEqual(status_chart.group_by_field_id.name, "state")
         self.assertFalse(status_chart.date_field_id)
 

@@ -162,7 +162,7 @@
         },
         {
           "name": "Top Surveys by Completions",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "survey.user_input",
           "aggregation": "count",
           "group_by_field_id": "survey_id",
@@ -180,7 +180,7 @@
         },
         {
           "name": "Answers by Status",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "survey.user_input",
           "aggregation": "count",
           "group_by_field_id": "state",

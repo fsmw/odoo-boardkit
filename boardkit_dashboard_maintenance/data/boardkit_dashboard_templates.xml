@@ -182,7 +182,7 @@
         },
         {
           "name": "Open by Team",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "maintenance.request",
           "aggregation": "count",
           "group_by_field_id": "maintenance_team_id",
@@ -199,7 +199,7 @@
         },
         {
           "name": "Open by Type",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "maintenance.request",
           "aggregation": "count",
           "group_by_field_id": "maintenance_type",

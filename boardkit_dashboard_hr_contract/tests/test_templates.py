@@ -58,7 +58,7 @@ class TestContractDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase
         by_dept = dashboard.item_ids.filtered(
             lambda i: i.name == "Running by Department"
         )
-        self.assertEqual(by_dept.item_type, "bar_horizontal")
+        self.assertEqual(by_dept.item_type, "ranking")
         self.assertEqual(by_dept.group_by_field_id.name, "department_id")
 
         recent = dashboard.item_ids.filtered(lambda i: i.name == "Recent Contracts")

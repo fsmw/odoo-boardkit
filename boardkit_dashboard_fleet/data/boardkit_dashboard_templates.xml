@@ -159,7 +159,7 @@
         },
         {
           "name": "Active by Brand",
-          "item_type": "bar_horizontal",
+          "item_type": "ranking",
           "model": "fleet.vehicle",
           "aggregation": "count",
           "group_by_field_id": "brand_id",
@@ -176,7 +176,7 @@
         },
         {
           "name": "Active by Fuel Type",
-          "item_type": "doughnut",
+          "item_type": "segmented",
           "model": "fleet.vehicle",
           "aggregation": "count",
           "group_by_field_id": "fuel_type",

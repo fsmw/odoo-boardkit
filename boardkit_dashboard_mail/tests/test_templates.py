@@ -59,5 +59,5 @@ class TestMailDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase):
         self.assertIn("location", column_names)
 
         by_type = dashboard.item_ids.filtered(lambda i: i.name == "Activities by Type")
-        self.assertEqual(by_type.item_type, "pie")
+        self.assertEqual(by_type.item_type, "segmented")
         self.assertEqual(by_type.group_by_field_id.name, "activity_type_id")

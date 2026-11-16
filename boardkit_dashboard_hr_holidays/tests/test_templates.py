@@ -53,7 +53,7 @@ class TestHolidaysDashboardTemplates(BoardkitTemplateSmokeMixin, TransactionCase
         self.assertFalse(pending_days.date_field_id)
 
         by_type = dashboard.item_ids.filtered(lambda i: i.name == "Days by Type")
-        self.assertEqual(by_type.item_type, "bar_horizontal")
+        self.assertEqual(by_type.item_type, "ranking")
         self.assertEqual(by_type.group_by_field_id.name, "holiday_status_id")
 
         recent = dashboard.item_ids.filtered(lambda i: i.name == "Recent Requests")
