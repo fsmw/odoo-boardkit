@@ -14,3 +14,4 @@ from . import test_templates
 from . import test_tour
 from . import test_visual_style
 from . import test_item_presentations
+from . import test_icons

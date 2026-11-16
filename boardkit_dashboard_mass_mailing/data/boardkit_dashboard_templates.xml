@@ -138,6 +138,7 @@
           "icon": "fa-exclamation-triangle",
           "domain": "[('trace_status', '=', 'bounce')]",
           "date_field_id": "sent_datetime",
+          "compare_previous_period": true,
           "layout": {
             "x": 9,
             "y": 2,

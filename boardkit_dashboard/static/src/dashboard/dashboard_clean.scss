@@ -199,3 +199,109 @@ $bk-clean-small-text: 0.8125rem;
         }
     }
 }
+
+// Icon badge beside the title, trend pill and footnote of Clean tiles/KPIs.
+.o_boardkit_dashboard_card.o_boardkit_card_clean {
+    .o_boardkit_dashboard_card_icon {
+        flex: 0 0 22px;
+        width: 22px;
+        height: 22px;
+        border-radius: 7px;
+        background-color: color-mix(
+            in srgb,
+            var(--bk-accent, currentColor) 15%,
+            transparent
+        );
+        color: var(--bk-accent, currentColor);
+        font-size: 15px;
+        line-height: 1;
+    }
+
+    .o_boardkit_delta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25em;
+        padding: 0.15rem 0.5rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        line-height: 1.4;
+
+        [class*="ph-"] {
+            font-size: 1.05em;
+        }
+
+        &.o_boardkit_delta_up {
+            background-color: rgba($o-success, 0.12);
+        }
+
+        &.o_boardkit_delta_down {
+            background-color: rgba($o-danger, 0.1);
+        }
+
+        &.o_boardkit_delta_none {
+            background-color: var(--bk-hover);
+            color: var(--bk-muted);
+            font-weight: 500;
+        }
+    }
+
+    .o_boardkit_dashboard_card_footnote {
+        flex: 0 0 auto;
+        padding-top: 0.35rem;
+        padding-bottom: 0.45rem;
+        border-top: 1px solid var(--bk-hairline);
+        color: var(--bk-muted);
+        font-size: 0.75rem;
+        text-align: center;
+    }
+}
+
+// Values line up across a row of cards whether or not a card has a trend
+// or a footnote. Bootstrap's alignment utilities are !important, hence here.
+.o_boardkit_dashboard_card.o_boardkit_card_clean {
+    &[data-item-type="tile"] .o_boardkit_dashboard_card_body > .d-flex {
+        align-items: flex-start !important;
+        padding-top: 0.3rem;
+    }
+
+    &[data-item-type="kpi"] .o_boardkit_dashboard_card_body > .d-flex {
+        justify-content: flex-start !important;
+        padding-top: 0.3rem;
+    }
+
+    .o_boardkit_delta {
+        align-self: center;
+    }
+}
+
+// On narrow cards the value shrinks with an ellipsis instead of pushing the
+// trend pill onto a second line, where the footnote would clip it.
+.o_boardkit_dashboard_card.o_boardkit_card_clean {
+    .o_boardkit_dashboard_card_body .align-items-baseline {
+        flex-wrap: nowrap !important;
+    }
+
+    .o_boardkit_dashboard_big_value {
+        flex: 0 1 auto;
+        min-width: 0;
+    }
+
+    .o_boardkit_delta {
+        flex: 0 0 auto;
+    }
+}
+
+// The card body is a size container: narrow tiles use a smaller value so the
+// number and its trend pill still fit on one line.
+@container (max-width: 190px) {
+    .o_boardkit_dashboard_card.o_boardkit_card_clean {
+        .o_boardkit_dashboard_big_value {
+            font-size: 1.3rem;
+        }
+
+        .o_boardkit_delta {
+            padding-inline: 0.4rem;
+            font-size: 0.6875rem;
+        }
+    }
+}

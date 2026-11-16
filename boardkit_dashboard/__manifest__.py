@@ -5,7 +5,7 @@
     "name": "Boardkit Dashboard",
     "summary": "Configurable analytic dashboards with tiles, KPIs, charts and lists",
     "category": "Productivity",
-    "version": "18.0.1.1.0",
+    "version": "18.0.1.2.0",
     "website": "https://github.com/Escodoo/odoo-boardkit",
     "author": "Escodoo",
     "maintainers": ["marcelsavegnago"],
@@ -30,6 +30,11 @@
             "boardkit_dashboard/static/src/catalogue/**/*",
             "boardkit_dashboard/static/src/dashboard/**/*",
             "boardkit_dashboard/static/src/fields/**/*",
+        ],
+        # Phosphor duotone icons (~400 KB): loaded on demand by the Clean
+        # style and the icon picker, never shipped to every backend page.
+        "boardkit_dashboard.phosphor": [
+            "boardkit_dashboard/static/lib/phosphor/phosphor-duotone.css",
         ],
         "boardkit_dashboard.chartjs_extensions": [
             "boardkit_dashboard/static/lib/chartjs-chart-funnel.umd.min.js",

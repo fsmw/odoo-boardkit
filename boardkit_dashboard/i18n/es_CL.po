@@ -3378,3 +3378,51 @@ msgstr "Sin datos para los filtros seleccionados"
 #: code:addons/boardkit_dashboard/static/src/dashboard/grouped_cards.xml:0
 msgid "total"
 msgstr "total"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
+msgid "No baseline"
+msgstr "Sin base"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/dashboard/dashboard_item_card.xml:0
+msgid "No earlier figure to compare with"
+msgstr "No hay una cifra anterior para comparar"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/fields/icon_picker_field.xml:0
+msgid "Browse icons"
+msgstr "Explorar íconos"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/fields/icon_picker_field.xml:0
+msgid "Search icons"
+msgstr "Buscar íconos"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/fields/icon_picker_field.xml:0
+msgid "Icons"
+msgstr "Íconos"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/fields/icon_picker_field.js:0
+msgid "Icon Picker"
+msgstr "Selector de íconos"
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/fields/icon_picker_field.js:0
+msgid "The icon list could not be loaded. Type the icon name instead."
+msgstr "No se pudo cargar la lista de íconos. Escribe el nombre del ícono."
+
+#. module: boardkit_dashboard
+#. odoo-javascript
+#: code:addons/boardkit_dashboard/static/src/fields/icon_picker_field.js:0
+msgid "No icon matches this search."
+msgstr "Ningún ícono coincide con la búsqueda."

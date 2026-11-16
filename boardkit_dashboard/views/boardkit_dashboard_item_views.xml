@@ -397,7 +397,8 @@
                                         <group>
                                             <field
                                                 name="icon"
-                                                invisible="item_type != 'tile'"
+                                                widget="boardkit_icon_picker"
+                                                invisible="item_type not in ['tile', 'kpi']"
                                             />
                                             <field
                                                 name="headline_template"
